@@ -27,11 +27,43 @@
      <![endif]-->
 	 
 	
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!--The viewport meta tag is used to improve the presentation and behavior of the samples 
+      on iOS devices-->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+
+    <link rel="stylesheet" href="https://js.arcgis.com/3.9/js/dojo/dijit/themes/claro/claro.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.9/js/esri/css/esri.css">
+
+    <style>
+      html, body { 
+        height: 100%; width: 100%;  
+        margin: 0; padding: 0;
+      } 
+      #map{ 
+        padding:0;
+        border:solid 1px #343642;
+        margin:5px 5px 5px 0px;
+      }
+      #leftPane{
+        width:20%;
+        border-top: solid 1px #343642;
+        border-left: solid 1px #343642;
+        border-bottom: solid 1px #343642;
+        margin:5px 0px 5px 5px;
+        color: #343642;
+        font:100% Georgia,"Times New Roman",Times,serif;
+        /*letter-spacing: 0.05em;*/
+      }
+     </style>
+
+    <script src="https://js.arcgis.com/3.9/"></script>
+    <script src="/Scripts/Mapping.js"></script>
+	
 	
 	<style>
 	
 			body{
-				background-image:url('images/bg.jpg');
 				min-height: 1200px;
 			}
 			#wrapper {overflow: hidden;}
@@ -42,9 +74,13 @@
 			#portamento_container #sidebar {float:none; position:absolute;} /* no need to float anymore, become absolutely positoned */
 			#portamento_container #sidebar.fixed {position:fixed;} /* if the panel is sliding, it needs position:fixed */
 		</style>
+		
+		
+		
+		
 
 </HEAD>
-<BODY>
+<BODY class="claro">
 	<!-- Fixed navbar -->
     <div  class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
@@ -78,7 +114,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Suggestions</a></li>
             <li><a href="#">Stuff</a></li>
-            <li><a href="admin.html">Admin</a></li>
+            <li><a href="#">Admin</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -119,6 +155,30 @@
 					
 					</div>
 				</div>
+				
+				
+				    <div id="mainWindow" data-dojo-type="dijit/layout/BorderContainer" 
+         data-dojo-props="design:'sidebar', gutters:false" 
+         style="width:100%; height:100%;">
+
+      <div id="leftPane"
+           data-dojo-type="dijit/layout/ContentPane" 
+           data-dojo-props="region:'left'">
+        Enter an address then click the locate button to use a sample address locator to return the location for 
+        street addresses in the United States. 
+        <br>
+
+        <textarea type="text" id="address"/>9100 Jollyville Rd, Austin, TX</textArea>
+        <br>
+
+        <button id="locate" data-dojo-type="dijit/form/Button">Locate</button> 
+      </div>
+
+      <div id="map" 
+           data-dojo-type="dijit/layout/ContentPane" 
+           data-dojo-props="region:'center'">
+      </div>
+    </div>
 
     </div> <!-- /container -->
 
