@@ -10,8 +10,10 @@ This project is deployed to firebase hosting with every git push. If something g
 Firebase REST API URL: https://amber-fire-6558.firebaseIO.com/[path/to/json/object].json
 
 Example for posting data:
+
+```
 ____________________
-```Method: PUT 
+Method: PUT 
 URL: https://amber-fire-6558.firebaseIO.com/data.json 
 Data: { "first": "Jack", "last": "Sparrow" } (application/json)
 
