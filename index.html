@@ -15,9 +15,11 @@
 	">
 	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link href="bootstrap/css/prettify.css" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<link href="css/styles.css" rel="stylesheet">
+	
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
      <!--[if lt IE 9]>
        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -57,7 +59,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Menu</a></li>
+            <li ><a href="#">Menu</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
             <li class="dropdown">
@@ -74,9 +76,9 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="../navbar/">Suggestions</a></li>
-            <li><a href="../navbar-static-top/">Stuff</a></li>
-            <li class="active"><a href="./">Admin</a></li>
+            <li><a href="#">Suggestions</a></li>
+            <li><a href="#">Stuff</a></li>
+            <li><a href="admin.html">Admin</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -87,16 +89,17 @@
       <!-- Main component for a primary marketing message or call to action -->
     
 
-				<div id="wrapper">
-				<div id="sidebar">
+				<div id="wrapper " class="hd-sm">
+				<div id="sidebar" class="share  ">
 					<div class="row">
-						<div class="col-xs-3">
-						  <h3 class="demo-panel-title">Share</h3>
-						  <div class="share mrl">
+						
+						
+						
+						  <div >
 							<ul>
 							  <li>
-								<label class="share-label" for="share-toggle2">Facebook</label>
-								<input type="checkbox" data-toggle="switch" />
+								<label class="share-label" for="share-toggle2 ">Facebook</label>
+								<input  type="checkbox"  data-toggle="switch" />
 							  </li>
 							  <li>
 								<label class="share-label" for="share-toggle4">Twitter</label>
@@ -107,9 +110,9 @@
 								<input type="checkbox" data-toggle="switch" />
 							  </li>
 							</ul>
-							<a href="#" class="btn btn-primary btn-block btn-large">Share</a>
+							<a href="#" class="btn btn-primary btn-block btn-large">Go!</a>
 						  </div> <!-- /share -->
-						</div>
+						
 					
 					
 					
@@ -123,16 +126,20 @@
 
 	<!-- SCRIPTS -->
 
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-	<script src="js/portamento-min.js"></script>
 	<script src="js/jquery-ui-1.10.3.custom.min.js"></script>
     <script src="js/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-select.js"></script>
     <script src="js/bootstrap-switch.js"></script>
     <script src="js/flatui-checkbox.js"></script>
     <script src="js/flatui-radio.js"></script>
     <script src="js/jquery.tagsinput.js"></script>
     <script src="js/jquery.placeholder.js"></script>
+    <script src="js/typeahead.js"></script>
+    <script src="bootstrap/js/google-code-prettify/prettify.js"></script>
+    <script src="js/application.js"></script>
+	<script src="js/portamento-min.js"></script>
+
 	<script>
 			$(document).ready(function() {
 				$('#sidebar').portamento({gap: 100});	// set a 100px gap rather than the default 10px
