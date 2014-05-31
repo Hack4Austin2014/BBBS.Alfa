@@ -9,8 +9,7 @@ function login(){
 		    // user authenticated with Firebase
 		    console.log('User ID: ' + user.uid + ', Provider: ' + user.provider);
 		  } else {
-		    // user is logged out
-		  }
+			console.log("logged in successfully");		  }
 		});
   
 	});
