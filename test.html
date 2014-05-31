@@ -11,9 +11,11 @@
 
 	<script>
 		var chatRef = new Firebase('https://amber-fire-6558.firebaseio.com');
+		var user=""
 		var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
-		  console.log(error, user);
 		});
+
+		console.log(auth);
 
 	</script>
 
