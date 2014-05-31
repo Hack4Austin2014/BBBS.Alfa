@@ -13,20 +13,30 @@
 		big, brothers, sisters, kids, places, locations, events, cheap,
 		free, place, food, fun, children, child
 	">
-	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link href="bootstrap/css/prettify.css" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<link href="css/styles.css" rel="stylesheet">
+	
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
      <!--[if lt IE 9]>
        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
      <![endif]-->
 	 
-	<script src="js/portamento-min.js"></script>
+	
 	
 	<style>
+	
+			body{
+				background-image:url('images/bg.jpg');
+				min-height: 1200px;
+			}
 			#wrapper {overflow: hidden;}
-			#content {width:486px; margin-right:10px; float:left; min-height:1200px;}
-			#sidebar {width:284px; padding:10px; background: #eee; float:right; height:400px;}
+			#content {width:486px; margin-right:10px; float:left; min-height:1200px; }
+			#sidebar {width:284px; padding:10px; background: #fff; color: #000;  border: 1px solid #ccc;float:right; height:400px;}
 			
 			#portamento_container {float:right; position:relative;} /* take the positioning of the sidebar, and become the start point for the sidebar positioning */
 			#portamento_container #sidebar {float:none; position:absolute;} /* no need to float anymore, become absolutely positoned */
@@ -36,7 +46,7 @@
 </HEAD>
 <BODY>
 	<!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div  class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -45,11 +55,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">BBBS</a>
+          <a class="navbar-brand" href="//bigmentoring.com/"><img src="images/logo.png" height="35x;"/></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li ><a href="#">Menu</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
             <li class="dropdown">
@@ -66,66 +76,48 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="../navbar/">Suggestions</a></li>
-            <li><a href="../navbar-static-top/">Stuff</a></li>
-            <li class="active"><a href="./">Admin</a></li>
+            <li><a href="#">Suggestions</a></li>
+            <li><a href="#">Stuff</a></li>
+            <li><a href="admin.html">Admin</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
-    <div class="container">
+    <div class="container" style="padding-top: 60px; background-image: ">
 
       <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1>Navbar example</h1>
-        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-        <p>To see the difference between static and fixed top navbars, just scroll.</p>
-        <p>
-          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
-        </p>
-      </div>
-	  			<div id="content">
-					<p>This shows <a href="http://simianstudios.com/portamento/">Portamento</a>'s default behaviour - no bottom boundary and a 10px gap from the top of the viewport.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-											<p>This shows <a href="http://simianstudios.com/portamento/">Portamento</a>'s default behaviour - no bottom boundary and a 10px gap from the top of the viewport.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-					<p>Bacon ipsum dolor sit amet do t-bone laborum, ad ground round turkey ball tip. Veniam aliqua jowl, duis in t-bone sint tongue fugiat. Pork loin tenderloin ad, veniam chicken meatloaf.</p>
-								
-				</div>
-				<div id="wrapper">
-				<div id="sidebar">
-					<p>Hello, I'm a sliding panel - unless the viewport is too small to contain my full glory, in which case I will stay right here so users can see all of me.</p>
-				</div>
+    
+
+				<div id="wrapper " class="hd-sm">
+				<div id="sidebar" class="share  ">
+					<div class="row">
+						
+						
+						
+						  <div >
+							<ul>
+							  <li>
+								<label class="share-label" for="share-toggle2 ">Facebook</label>
+								<input  type="checkbox"  data-toggle="switch" />
+							  </li>
+							  <li>
+								<label class="share-label" for="share-toggle4">Twitter</label>
+								<input type="checkbox" checked="" data-toggle="switch" />
+							  </li>
+							  <li>
+								<label class="share-label" for="share-toggle6">Pinterest</label>
+								<input type="checkbox" data-toggle="switch" />
+							  </li>
+							</ul>
+							<a href="#" class="btn btn-primary btn-block btn-large">Go!</a>
+						  </div> <!-- /share -->
+						
+					
+					
+					
+					
+					</div>
 				</div>
 
     </div> <!-- /container -->
@@ -133,9 +125,21 @@
 
 
 	<!-- SCRIPTS -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+	<script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-select.js"></script>
+    <script src="js/bootstrap-switch.js"></script>
+    <script src="js/flatui-checkbox.js"></script>
+    <script src="js/flatui-radio.js"></script>
+    <script src="js/jquery.tagsinput.js"></script>
+    <script src="js/jquery.placeholder.js"></script>
+    <script src="js/typeahead.js"></script>
+    <script src="bootstrap/js/google-code-prettify/prettify.js"></script>
+    <script src="js/application.js"></script>
 	<script src="js/portamento-min.js"></script>
+
 	<script>
 			$(document).ready(function() {
 				$('#sidebar').portamento({gap: 100});	// set a 100px gap rather than the default 10px
