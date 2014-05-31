@@ -34,9 +34,9 @@ function (
         spatialreference: new SpatialReference(102100)
     });
 
-    eventLayer = new FeatureLayer("https://services2.arcgis.com/DlASPyTb2UPEalFT/arcgis/rest/services/BBBS_Address/FeatureServer/0", { "id": "BPPAS" });
+    eventLayer = new FeatureLayer("http://services2.arcgis.com/DlASPyTb2UPEalFT/arcgis/rest/services/BBBS_Address/FeatureServer/0", { "id": "BPPAS" });
 
-    locator = new Locator("https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer");
+    locator = new Locator("http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer");
     locator.on("address-to-locations-complete", showResults);
     map.addLayer(eventLayer);
     // listen for button click then geocode
@@ -194,7 +194,7 @@ function QueryAddress() {
         query.returnGeometry = true;
         query.outFields = ["Category", "ID"];
 
-        queryTask = new QueryTask("https://services2.arcgis.com/DlASPyTb2UPEalFT/ArcGIS/rest/services/BBBS_Address/FeatureServer/0/query");
+        queryTask = new QueryTask("http://services2.arcgis.com/DlASPyTb2UPEalFT/ArcGIS/rest/services/BBBS_Address/FeatureServer/0/query");
         queryTask.execute(query, showResults);
 
         //eventLayer.queryFeatures(query, showResults); 
