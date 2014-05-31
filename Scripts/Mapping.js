@@ -142,7 +142,7 @@ function CreateDriveTime(geom) {
         params.outSpatialReference = new SpatialReference(102100);
         params.returnFacilities = false;
 
-        serviceAreaTask = new ServiceAreaTask("https://sampleserver3.arcgisonline.com/ArcGIS/rest/services/Network/USA/NAServer/Service Area");
+        serviceAreaTask = new ServiceAreaTask("http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/Network/USA/NAServer/Service Area");
 
 
         var features = [];
