@@ -12,19 +12,6 @@ Firebase REST API URL: https://amber-fire-6558.firebaseIO.com/[path/to/json/obje
 Example for posting data:
 
 ```
-____________________
-Method: PUT 
-URL: https://amber-fire-6558.firebaseIO.com/data.json 
-Data: { "first": "Jack", "last": "Sparrow" } (application/json)
-
-Response: { "first": "Jack", "last": "Sparrow" }
-_____________________
-
-
-Method: GET
-URL: https://amber-fire-6558.firebaseIO.com/data.json
-
-Response: { "first": "Jack", "last": "Sparrow" }
 
 ______________________
 
@@ -53,8 +40,7 @@ Data:
     "category": ["physical-intense"],
     "rating": 3,
     "picture":"http://upload.wikimedia.org/wikipedia/commons/a/ac/DeepEddyPoolBySteveHopson.jpg",
-    "url":"http://www.austinparks.org/our-parks.html?parkid=245",
-    "approved": true
+    "url":"http://www.austinparks.org/our-parks.html?parkid=245"
 }
 
 Response: {"name": "-JOIJTxJyZKBGNFk1JD5"}
