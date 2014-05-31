@@ -11,7 +11,7 @@ Firebase REST API URL: https://amber-fire-6558.firebaseIO.com/[path/to/json/obje
 
 Example for posting data:
 ____________________
-Method: PUT 
+```Method: PUT 
 URL: https://amber-fire-6558.firebaseIO.com/data.json 
 Data: { "first": "Jack", "last": "Sparrow" } (application/json)
 
@@ -142,3 +142,4 @@ Response: (after posting the same even three times)
         "picture": "http://upload.wikimedia.org/wikipedia/commons/a/ac/DeepEddyPoolBySteveHopson.jpg"
     }
 }
+```
