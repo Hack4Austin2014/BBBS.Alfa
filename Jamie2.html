@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddFeature</title>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://js.arcgis.com/3.9/"></script>
+
+</head>
+<body>
+    <div>
+        <a href="#" onclick="run(); return false;">Test Add</a>
+        <a href="#" onclick="batchAdd(); return false;">Test Add FireBase</a>
+    </div>
+
+    <script>
+    var json; 
+    var locator;
+    
+    function batchAdd()
+    {
+      jArray = [
+{
+	"title": "Republic Square Park",
+	"description": "Features fresh organic produce, meats, and cheeses straight from surrounding Texas farms, plus live music every week.",
+	"address": {
+		"street1": "422 Guadalupe",
+		"city": "Austin",
+		"state": "TX",
+		"zip": ""
+	},
+	"datebegin": "7/1/2014",
+	"dateend": null,
+	"interval": "Every week",
+	"agerange": "6 to 18",
+	"pricerange": "N/A",
+	"category": "Social",
+	"rating": 5,
+	"picture": "austinfarmermarket.jpg",
+	"url": "http://www.austinfarmersmarket.org/",
+	"opentime": "9am – 1pm",
+	"tag": "Recommended"
+},
+{
+	"title": "Palmer Events Center",
+	"description": "The event’s focus is to assist young adults (high school students) in career exploration. We are contacting companies that may have internship opportunities as well as companies that are interested in showcasing what they do as a means for peaking interest in young adults. This is a FREE event! We will have U21 bands playing during the event.",
+	"address": {
+		"street1": "900 Barton Springs Rd",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78704"
+	},
+	"datebegin": "5/28/2014",
+	"dateend": null,
+	"interval": "",
+	"agerange": "16 to 18",
+	"pricerange": "Free",
+	"category": "Educational",
+	"rating": 5,
+	"picture": "careercouncil.jpg",
+	"url": "https://austintexas.gov/event/career-fest-austin-youth-council-annual-community-event",
+	"opentime": "10am – 2pm",
+	"tag": "Recommended"
+},
+{
+	"title": "Southwest Key's El Centro de Familia (Community Room),",
+	"description": "Zumba is easy, fun, and an excellent exercise and… you don’t even feel like you are exercising! It is definitely a \"party\" atmosphere which is less intimidating for people who may not be as coordinated as others. It is a \"feel good\" workout where you can dance your woes away!",
+	"address": {
+		"street1": "6002 Jain Lane ",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78721"
+	},
+	"datebegin": "6/1/2014",
+	"dateend": null,
+	"interval": "",
+	"agerange": "6 to 18",
+	"pricerange": "$(less than $10)",
+	"category": "Physical",
+	"rating": 5,
+	"picture": "zumba.jpg",
+	"url": "http://www.swkey.org/promise/event/2012/11/05/1352162700/zumba-classes",
+	"opentime": "6:30pm – 7:45pm",
+	"tag": "Recommended"
+},
+{
+	"title": "Centro Cultural Hispano de San Marcos ",
+	"description": "",
+	"address": {
+		"street1": "211 Lee Street ",
+		"city": "San Marcos",
+		"state": "TX",
+		"zip": "78666"
+	},
+	"datebegin": "5/31/2014",
+	"dateend": null,
+	"interval": "",
+	"agerange": "6 to 18",
+	"pricerange": "$(less than $10)",
+	"category": "Educational",
+	"rating": 5,
+	"picture": "familyartnight.jpg",
+	"url": "http://www.sanmarcoscentro.org/calendar.html",
+	"opentime": "6:00pm – 7:15pm",
+	"tag": "Recommended"
+},
+{
+	"title": "",
+	"description": "Austin Children’s Museum stays open late every Wednesday night for Community Night! Come out and enjoy exhibits and a variety of hands-on activities. Free admission but $1 donation is suggested.",
+	"address": {
+		"street1": "201 Colorado",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78701"
+	},
+	"datebegin": "4/2/2014",
+	"dateend": null,
+	"interval": "Every week",
+	"agerange": "6 to 14",
+	"pricerange": "$(less than $10)",
+	"category": "Educational",
+	"rating": 5,
+	"picture": "austinchildmuseum.jpg",
+	"url": "",
+	"opentime": "5pm – 8pm",
+	"tag": "Recommended"
+},
+{
+	"title": "Pflugerville Public Library",
+	"description": "we'll be watching an animated fairy tale about a pair of sisters who have the power to control ice and snow. This film is rated PG. Refreshments will be provided while they last.",
+	"address": {
+		"street1": "1008 W Pflugerville St",
+		"city": "Pflugerville",
+		"state": "TX",
+		"zip": "78660"
+	},
+	"datebegin": "6/7/2014",
+	"dateend": null,
+	"interval": "",
+	"agerange": "6 to 14",
+	"pricerange": "Free",
+	"category": "Social",
+	"rating": 5,
+	"picture": "oscarfilmcreening.jpg",
+	"url": "http://www.pflugervilletx.gov/faq.aspx?TID=3",
+	"opentime": "6pm - 9pm",
+	"tag": "Recommended"
+},
+{
+	"title": "The Williamson Museum",
+	"description": "Come out to The Williamson Museum the 2nd Saturday of each month from 10-2:00 p.m. for hands-on, interactive history lessons & activities. This program is free for children of all ages.",
+	"address": {
+		"street1": "716 S. Austin Ave. ",
+		"city": "Georgetown",
+		"state": "TX",
+		"zip": "78626"
+	},
+	"datebegin": "6/7/2014",
+	"dateend": null,
+	"interval": "Every month",
+	"agerange": "6 to 18",
+	"pricerange": "Free",
+	"category": "Educational",
+	"rating": 5,
+	"picture": "handonhistory.jpg",
+	"url": "http://www.williamsonmuseum.org/",
+	"opentime": "10am – 2pm",
+	"tag": "Recommended"
+},
+{
+	"title": "Key East Austin Community Center",
+	"description": "If you are looking to relieve stress, get to know your physical potential, and do so in a way that is nurturing and self affirming then yoga is a perfect solution for you",
+	"address": {
+		"street1": "6002 Jain Lane",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78721"
+	},
+	"datebegin": "6/9/2014",
+	"dateend": null,
+	"interval": "",
+	"agerange": "6 to 18",
+	"pricerange": "Free",
+	"category": "Physical",
+	"rating": 5,
+	"picture": "yoga.jpg",
+	"url": "http://www.zvents.com/austin_tx/events/show/248341504-yoga-classes",
+	"opentime": "5:30pm – 6:30pm",
+	"tag": "Recommended"
+},
+{
+	"title": "San Marcos Activity Center",
+	"description": "Join local Juggler Aaron Friend as he teaches you how to juggle. Come juggle with the San Marcos Juggling Club. If you want to learn, we will teach you.",
+	"address": {
+		"street1": "630 E Hopkins St",
+		"city": "San Marcos",
+		"state": "TX",
+		"zip": "78666"
+	},
+	"datebegin": "6/11/2014",
+	"dateend": null,
+	"interval": "",
+	"agerange": "9 to 18",
+	"pricerange": "Free",
+	"category": "Physical",
+	"rating": 5,
+	"picture": "juggling.jpg",
+	"url": "http://jugglejunction.org/club.php?sanm1082",
+	"opentime": "6pm – 7pm",
+	"tag": "Recommended"
+},
+{
+	"title": "Blanton Museum of Art The University of Texas at Austin",
+	"description": "Drop by the Art Lab, an open studio that invites you to experiment with enticing materials and explore your own creative process.",
+	"address": {
+		"street1": "200 E. Martin Luther King Jr. Blvd. ",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78701"
+	},
+	"datebegin": "6/12/2014",
+	"dateend": null,
+	"interval": "",
+	"agerange": "6 to 18",
+	"pricerange": "$$($10 to $25)",
+	"category": "Educational",
+	"rating": 5,
+	"picture": "familyartnight.jpg",
+	"url": "http://blantonmuseum.org/experience_the_blanton/family_programs/",
+	"opentime": "5:30pm – 6:30pm",
+	"tag": "Recommended"
+},
+{
+	"title": "",
+	"description": "North Austin FINALLY has a food truck court that ROCKS! Come to The NATY (North Austin Trailer Yard) Kid's Show every Sunday at 11:00am for great food and great music!",
+	"address": {
+		"street1": "1012 W. Anderson Ln. ",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78757"
+	},
+	"datebegin": "6/15/2014",
+	"dateend": null,
+	"interval": "",
+	"agerange": "6 to 18",
+	"pricerange": "Free",
+	"category": "Social",
+	"rating": 5,
+	"picture": "traileryard.jpg",
+	"url": "http://www.freefuninaustin.com/2013/02/north-austin-trailer-yard-kids-show.html",
+	"opentime": "11am – 12pm",
+	"tag": "Recommended"
+},
+{
+	"title": "Holiday Inn Town Lake",
+	"description": "Every Sunday Matches can use the rooftop pool and enjoy a hamburger or hot dog lunch and watch a movie in their theater for free.",
+	"address": {
+		"street1": "20 North IH-35",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78701"
+	},
+	"datebegin": "6/29/2014",
+	"dateend": null,
+	"interval": "Every week",
+	"agerange": "6 to 18 ",
+	"pricerange": "Free",
+	"category": "Social",
+	"rating": 5,
+	"picture": "swimmingandfood.jpg",
+	"url": "",
+	"opentime": "11am – 5pm",
+	"tag": "Recommended"
+},
+{
+	"title": "MLK at Congress",
+	"description": "Free Admission from 10am-5pm. The Blanton holds an incredible permanent collection, but they also have excellent visiting shows as well. Every 3rd Thursday, they are open until 9pm.",
+	"address": {
+		"street1": "200 East MLK",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78701"
+	},
+	"datebegin": "7/3/2014",
+	"dateend": null,
+	"interval": "",
+	"agerange": "6 to 18",
+	"pricerange": "Free",
+	"category": "Educational",
+	"rating": 5,
+	"picture": "blantonartmuseum.jpg",
+	"url": "http://blantonmuseum.org/",
+	"opentime": "11am – 5pm",
+	"tag": "Recommended"
+},
+{
+	"title": "Home Depot, all locations",
+	"description": "Workshops teach children do-it-yourself skills, tool safety and instill a sense of pride and accomplishment. All kids get to keep their craft and receive a FREE certificate of achievement.",
+	"address": {
+		"street1": "",
+		"city": "",
+		"state": "TX",
+		"zip": ""
+	},
+	"datebegin": "7/5/2014",
+	"dateend": null,
+	"interval": "Every month",
+	"agerange": "6 to 14",
+	"pricerange": "Free",
+	"category": "Educational",
+	"rating": 5,
+	"picture": "kidworkshop.jpg",
+	"url": "http://workshops.homedepot.com/workshops/home?cm_mmc=SEM|THD|G|BT2|Resources&gclid=CMD2nZ6h174CFUjk7Aod038AHA&gclsrc=ds",
+	"opentime": "9am – 12pm",
+	"tag": "Recommended"
+},
+{
+	"title": "Austin Fire Museum",
+	"description": "The station was built in 1938 and is a piece of history in and of itself. The station and museum are next door to the O’Henry Museum and Susanna Dickinson Museumand one block south of the famous Sixth Street District.",
+	"address": {
+		"street1": "401 East 5th Street",
+		"city": "Austin",
+		"state": "TX",
+		"zip": ""
+	},
+	"datebegin": "7/5/2014",
+	"dateend": null,
+	"interval": "Every week",
+	"agerange": "6 to 14",
+	"pricerange": "Free",
+	"category": "Educational",
+	"rating": 5,
+	"picture": "firemuseum.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "12pm – 5pm",
+	"tag": "Recommended"
+}];
+
+for (i = 0; i < jArray.length; i++)
+{
+console.log('Running ' + i); 
+json = jArray[i]; 
+addData(); 
+} 
+    }
+      function addData()
+      {
+           
+            //grad address
+            addressInput = json.address.street1 + ' ' + json.address.city + ', ' + json.address.state;
+            console.log(addressInput); 
+          getAddress(json.address.street1,json.address.city,json.address.state, json.category); 
+            
+      
+      }
+
+      function getAddress(street, city, state, cat)
+      {
+
+require([
+  "esri/map", "esri/config", "esri/SpatialReference", "esri/layers/FeatureLayer", "esri/tasks/locator", "esri/graphic",
+  "esri/InfoTemplate", "esri/symbols/SimpleMarkerSymbol",
+  "esri/symbols/Font", "esri/symbols/TextSymbol",
+  "dojo/_base/array", "esri/Color",
+  "dojo/number", "dojo/parser", "dojo/dom", "dijit/registry",
+  "esri/tasks/ServiceAreaTask", "esri/tasks/ServiceAreaParameters",
+  "dijit/form/Button", "dijit/form/Textarea",
+  "dijit/layout/BorderContainer", "dijit/layout/ContentPane",
+  "dojo/domReady!"
+],
+
+function (
+  Map, esriConfig, SpatialReference, FeatureLayer, Locator, Graphic,
+  InfoTemplate, SimpleMarkerSymbol,
+  Font, TextSymbol,
+  arrayUtils, Color,
+  number, parser, dom, registry, ServiceAreaTask, ServiceAreaParameters
+    ) {
+    parser.parse();
+
+    var addressInput = street + ' ' + city + ', ' + state; 
+    esriConfig.defaults.io.proxyUrl = "/proxy";
+
+    locator = new Locator("http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer");
+    locator.on("address-to-locations-complete", ShowAddressResult);
+
+        var address = {
+            "SingleLine": addressInput
+        };
+        locator.outSpatialReference = new SpatialReference(102100);
+        var options = {
+            address: address,
+            outFields: ["Loc_name"]
+        }
+        locator.addressToLocations(options);
+        
+        
+            function ShowAddressResult(evt)
+    {
+        var candidate;
+        var geom;
+        arrayUtils.every(evt.addresses, function (candidate) {
+            console.log(candidate.score);
+            if (candidate.score > 80) {
+                console.log(candidate.location);
+                var attributes = {
+                    address: candidate.address,
+                    score: candidate.score,
+                    locatorName: candidate.attributes.Loc_name
+                };
+                geom = candidate.location;
+                
+                return false; //break out of loop after one candidate with score greater  than 80 is found.
+            }
+        });
+        if (geom !== undefined) {
+            //map.centerAndZoom(geom, 12);
+            //Create drive time polygon
+            
+            var jsonString = JSON.stringify(json); 
+            
+            $.ajax({
+                type: "POST",
+                url: "https://amber-fire-6558.firebaseIO.com/data/events.json",
+                data: jsonString,
+                success: function (result) {
+                    var id = result.name;    
+                       addFeatureServer(id, cat, geom.x, geom.y, street, city, state); 
+                }
+            });
+
+            //CreateDriveTime(geom);
+        }
+    }
+    }
+    );
+    
+    
+    
+    }
+    
+
+        function addFeatureServer(id, cat, x, y, a, c, s)
+        {
+
+            var jsonString = JSON.stringify([
+                    {
+                        "attributes": {
+                            "ID": id,
+                            "Category" : cat,
+                            "Address" : a,
+                            "City" :  c,
+                            "State" : s
+                        },
+                        "geometry": {
+                        
+                            "x": x,
+                            "y": y
+                        }
+                    }
+            ]); 
+
+            $.ajax({
+                type: "POST",
+                url: "http://services2.arcgis.com/DlASPyTb2UPEalFT/arcgis/rest/services/BBBS_Address/FeatureServer/0/addFeatures",
+                data: {
+                    f: 'pjson',
+                    token: "XYOPXRdr3-Po6ikWBhtkvm1Wa-LGSnljjGZ3zjczIh9cKnku4Xcy6CTgGXDpNhpn_vPnMUC0auVX92wcSEOKTlYNXHUHdN734wac26PymYiNBvHmqD4ZTikdXH4nLLXlwv8f122ZxKnrv1HJhJP4Ew..",
+                    features: jsonString
+
+                },
+                success: function (result) {
+                    console.log(id + '|' + x + ' | ' + y + '  ' + result); 
+                    
+                }
+            });
+        }
+    </script>
+</body>
+</html>
