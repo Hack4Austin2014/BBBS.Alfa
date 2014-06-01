@@ -21,7 +21,7 @@ function login(){
 		  	});
 		  	
 
-		  	console.log("User: ", usr._id);
+		  	console.log("User: ", !!usr._id);
 		  	if(!usr)
 		  		alert("Incorrect email address or password.");
 		    return;
