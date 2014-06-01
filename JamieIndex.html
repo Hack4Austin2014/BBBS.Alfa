@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<HTML lang="en">
+<HTML>
 <HEAD>
   <title> BBBS Maps </title>
   
@@ -14,15 +13,12 @@
 		big, brothers, sisters, kids, places, locations, events, cheap,
 		free, place, food, fun, children, child
 	">
-	<link rel="icon" href="//www.bbbs.org/atf/cf/%7B8778d05c-7ccb-4dee-9d6e-70f27c016cc9%7D/ANIMATED_FAVICON.GIF" type="image/x-icon"><link rel="shortcut icon" href="//www.bbbs.org/atf/cf/%7B8778d05c-7ccb-4dee-9d6e-70f27c016cc9%7D/favicon.ico" type="image/x-icon">
-	
 	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link href="bootstrap/css/prettify.css" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<link href="css/styles.css" rel="stylesheet">
-	
 	<link href="css/map.css" rel="stylesheet">
 	
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -43,29 +39,37 @@
 	
 
     <style>
-      html, body, #mainWindow { 
+      html, body, mainWindow { 
         height: 100%; width: 100%;  
         margin: 0; padding: 0;
+        overflow: hidden;
       } 
-	  #mainWindow { margin: 0 !important; height: auto;}
       #map{ 
-        padding:0px;
+      width: 100%; height: 100%; 
+        padding:0px;;
         border:solid 1px #343642;
-        margin:0px auto; 
-		overflow-x: hidden !important ;
-		height: 100%;
-		width: 100% ;
-		
+        margin:5px 5px 5px 0px;
+		overflow:hidden;
       }
-     
+      #leftPane{
+        width:20%;
+        border-top: solid 1px #343642;
+        border-left: solid 1px #343642;
+        border-bottom: solid 1px #343642;
+        margin:5px 0px 5px 5px;
+        color: #343642;
+        font:100% Georgia,"Times New Roman",Times,serif;
+        /*letter-spacing: 0.05em;*/
+      }
 	  
 	  .row, .col { overflow: hidden; position: absolute; }
     .row { left: 0; right: 0; }
     .col { top: 0; bottom: 0; }
-    .scroll-x { overflow-x: hidden !important; }
+    .scroll-x { overflow-x: auto; }
     .scroll-y { overflow-y: auto; }
 
-    .body.row { top: 50px; bottom: 0px; }
+    .body.row { top: 75px; bottom: 50px; }
+    
      </style>
 
     <script src="https://js.arcgis.com/3.9/"></script>
@@ -73,10 +77,7 @@
 	
 	
 	<style>
-			#wrapper {
-				overflow: hidden;
-				padding: 25px;
-				}
+			#wrapper {overflow: hidden;}
 			#content {width:486px; margin-right:10px; float:left; }
 			#sidebar {width:284px; padding:10px; background: #fff; color: #000;  border: 1px solid #ccc;float:right; height:400px;}
 			
@@ -122,14 +123,14 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-			<li><a href="#" onclick="getLocation();">Find Me</a></li>
+            <li><a href="#">Suggestions</a></li>
             <li> 
 				<form class="navbar-form navbar-right" action="#" role="search">
 			      <div class="form-group">
 			        <div class="input-group">
-			          <input class="form-control"  id="address" type="search" placeholder="Search Address">
+			          <input class="form-control"  id="address" type="search" placeholder="Search">
 			          <span class="input-group-btn">                
-			            <button id="locate"  type="button"  class="searchbtn" onclick="locate();" >Testing</button>
+			            <button id="locate"  type="button"  class="searchbtn" onclick="locate();" >Testing</button><button onclick="getLocation();">Try It</button>
 
 			          </span>            
 			        </div>
@@ -140,50 +141,15 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
+	<div>
+
+	</div>
 	 
 
-	<div id="mainWindow" data-dojo-type="dijit/layout/BorderContainer" 
-         data-dojo-props="design:'sidebar', gutters:false" 
-		 class="body row scroll-y scroll-x">
-
-      <div id="map" 
-           data-dojo-type="dijit/layout/ContentPane" 
-           data-dojo-props="region:'center'" >
+	<div id="mainWindow" >
+      <div id="map">
       </div>
     </div>
-	  <!--
-			<div id="wrapper " class="visible-lg">
-				<div id="sidebar" class="share  ">
-					
-						
-						
-						
-						  <div >
-							<ul>
-							  <li>
-								<label class="share-label" for="share-toggle2 ">Facebook</label>
-								<input  type="checkbox"  data-toggle="switch" />
-							  </li>
-							  <li>
-								<label class="share-label" for="share-toggle4">Twitter</label>
-								<input type="checkbox" checked="" data-toggle="switch" />
-							  </li>
-							  <li>
-								<label class="share-label" for="share-toggle6">Pinterest</label>
-								<input type="checkbox" data-toggle="switch" />
-							  </li>
-							</ul>
-							<a href="#" class="btn btn-primary btn-block btn-large">Go!</a>
-						  </div> 
-						
-					
-					
-					
-					
-				
-				</div>
-
-			</div> wrapper -->
 			
 	<!-- SCRIPTS -->
 
@@ -202,7 +168,8 @@
 	<script src="js/portamento-min.js"></script>
 
 	<script>
-		
+//		var x=document.getElementById("demo");
+
 		function getLocation()
 		  {
 		  if (navigator.geolocation)
@@ -225,6 +192,7 @@
 				
 				
 			});	
-		</script>
+			
+			</script>
 </BODY>
 </HTML>
