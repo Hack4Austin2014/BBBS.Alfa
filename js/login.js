@@ -14,23 +14,29 @@ function login(){
 		    loadContent();
 		    return;
 		  } else {
-		  	
+		  	console.log("attempting to login");
+
 		  	var usr = auth.login('password', {
 		  	  email: $('#inputEmail3').val(),
 		  	  password: $('#inputPassword3').val()
 		  	});
 
-		  	if(!!usr._id)
+		  	if(!usr._id){
 		  		alert("Incorrect email address or password.");
+		  		console.log("couldn't log in")
+		  	}
 		  	else{
-		  		$( "#main-content" ).html( "HELLO!" );
+		  		console.log("login successful!")
+		  		loadContent();
 		  	}
 		    return;
 		  }
 		}
 
 		function loadContent (){
+			console.log("loading content...");
 
+			//$( "#main-content" ).html( "HELLO!" );
 		}
 	
 }
