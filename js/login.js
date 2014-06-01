@@ -11,8 +11,14 @@ function login(){
 		    $( "#main-content" ).load( "inputEvent.html" );
 		    return;
 		  } else {
-		  	console.log(error);
-		    alert("Incorrect email address or password");
+		  	
+		  	var usr = auth.login('password', {
+		  	  email: $('#inputEmail3').val(),
+		  	  password: $('#inputPassword3').val()
+		  	});
+
+		  	if(!usr)
+		  		alert("Incorrect email address or password.");
 		    return;
 		  }
 		});
