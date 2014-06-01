@@ -14,14 +14,19 @@
 		big, brothers, sisters, kids, places, locations, events, cheap,
 		free, place, food, fun, children, child
 	">
-	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="icon" href="//www.bbbs.org/atf/cf/%7B8778d05c-7ccb-4dee-9d6e-70f27c016cc9%7D/ANIMATED_FAVICON.GIF" type="image/x-icon"><link rel="shortcut icon" href="//www.bbbs.org/atf/cf/%7B8778d05c-7ccb-4dee-9d6e-70f27c016cc9%7D/favicon.ico" type="image/x-icon">
 	
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link href="bootstrap/css/prettify.css" rel="stylesheet">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
-	<script src='https://cdn.firebase.com/js/simple-login/1.4.1/firebase-simple-login.js'></script>
+		<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
+<script type='text/javascript' src='https://cdn.firebase.com/js/simple-login/1.4.1/firebase-simple-login.js'></script>
   <script src="js/login.js"></script>
+	<link href="css/styles.css" rel="stylesheet">
 	
+	<link href="css/map.css" rel="stylesheet">
+	<link href="css/eventHolder.css" rel="stylesheet">
 	
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
      <!--[if lt IE 9]>
@@ -30,6 +35,91 @@
      <![endif]-->
 	 
 	
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!--The viewport meta tag is used to improve the presentation and behavior of the samples 
+      on iOS devices-->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+	
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.9/js/esri/css/esri.css">
+
+	
+
+    <style>
+      html, body, #mainWindow { 
+        height: 100%; width: 100%;  
+        margin: 0; padding: 0;
+		background: #eee;
+      } 
+	  
+	  h1{color: #7AC142;}
+	  #mainWindow { margin: 0 !important; height: auto;}
+      #map{ 
+        padding:0px;
+        border:solid 1px #343642;
+        margin:0px auto; 
+		overflow-x: hidden !important ;
+		height: 100%;
+		width: 100% ;
+		
+      }
+		
+	  
+	  .rows, .col { overflow: hidden; position: absolute; }
+    .rows { left: 0; right: 0; }
+    .col { top: 0; bottom: 0; }
+    .scroll-x { overflow-x: hidden !important; }
+    .scroll-y { overflow-y: auto; }
+
+    .body.rows { top: 50px; bottom: 0px; }
+	.eventHolder{
+
+	 width: 90%;  
+	 margin: 0 auto; 
+	 padding: 0; 
+	 border: 10px solid; 
+	 border-bottom-color: #7C3B97; 
+	 border-right-color:#7C3B97; 
+	 border-top-color:#9b59b6; 
+	 border-left-color:#9b59b6;  
+	 border-radius: 10px;  
+	 border: 10px solid #7C3B97;
+
+}
+
+
+
+.col-md-1{
+	border-style:solid;
+	border-width:2px;
+	border-color: #7C3B97;
+	background:#fff;
+	border-radius: 2px; 
+}
+	
+     </style>
+
+    <script src="https://js.arcgis.com/3.9/"></script>
+    <script src="js/mapping.js"></script>
+	
+	
+	<style>
+			#wrapper {
+				overflow: hidden;
+				padding: 25px;
+				}
+			#content {width:486px; margin-right:10px; float:left; }
+			#sidebar {width:284px; padding:10px; background: #fff; color: #000;  border: 1px solid #ccc;float:right; height:400px;}
+			
+			#portamento_container {float:right; position:relative;} /* take the positioning of the sidebar, and become the start point for the sidebar positioning */
+			#portamento_container #sidebar {float:none; position:absolute;} /* no need to float anymore, become absolutely positoned */
+			#portamento_container #sidebar.fixed {position:fixed;} /* if the panel is sliding, it needs position:fixed */
+		</style>
+		
+		
+		
+		
+
 </HEAD>
 <BODY>
 	<!-- Fixed navbar -->
@@ -42,15 +132,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="//bigmentoring.com/"><img src="images/logo.png" height="35x;"/></a>
+          <a class="navbar-brand" href="/"><img src="images/logo.png" height="35x;"/></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li ><a href="#">Menu</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li ><a href="/">Home</a></li>
+            <li ><a href="admin.html">Admin</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contact <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
@@ -62,16 +151,11 @@
               </ul>
             </li>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Suggestions</a></li>
-            <li><a href="#">Stuff</a></li>
-            <li><a href="#">Admin</a></li>
-          </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
-<div id="main-content" class="container" style="padding-top: 80px"></div>
+<div id="main-content" class="container well" style="padding-top: 80px"></div>
 
 	<!-- SCRIPTS -->
 

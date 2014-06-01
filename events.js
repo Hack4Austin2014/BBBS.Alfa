@@ -89,14 +89,10 @@ function FilterByAge(ids, age)
       {
         ids.forEach(function(idName)
         {
-          // console.log(userSnap.val());
-          //console.log(userSnap.val());
-          //console.log(userSnap.val().agerange);
-          //console.log(age);
           if ((userSnap.name() == idName && userSnap.val().agerange == age))
           {
             arrayTest.push(userSnap);
-            console.log(userSnap.val());
+          //  console.log(userSnap.val());
             jQuery("#eventsDiv").append("Event: " + userSnap.val().title + "<br/>");
             ids.splice(i, 1);
           }

@@ -1,5 +1,6 @@
 
 var fb = new Firebase('https://amber-fire-6558.firebaseio.com');
+/*
 var auth = new FirebaseSimpleLogin(fb, function (error, user){
 	loadContent();
 	// if(error){
@@ -14,6 +15,11 @@ var auth = new FirebaseSimpleLogin(fb, function (error, user){
 	// 	displayLoginForm();
 	// }
 
+});
+*/
+
+$("document").ready(function(){
+   loadContent();
 });
 
 function loadContent (){
@@ -43,10 +49,10 @@ function displayLoginForm(){
 				    </div>\
 				  </form>';
 
-	$( "#main-content" ).html(formHTML);			  
+	$( "#main-content" ).html(formHTML);
 
 }
-
+/*
 var mylogin = function (){
 	console.dir(window.auth);
    	var user_email = $('#inputEmail3').val();
@@ -57,4 +63,4 @@ console.log(user_email, user_password);
   	  password: user_password
   	});
 }
-
+*/
