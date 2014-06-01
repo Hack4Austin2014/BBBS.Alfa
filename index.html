@@ -13,6 +13,8 @@
 		big, brothers, sisters, kids, places, locations, events, cheap,
 		free, place, food, fun, children, child
 	">
+	<link rel="icon" href="//www.bbbs.org/atf/cf/%7B8778d05c-7ccb-4dee-9d6e-70f27c016cc9%7D/ANIMATED_FAVICON.GIF" type="image/x-icon"><link rel="shortcut icon" href="//www.bbbs.org/atf/cf/%7B8778d05c-7ccb-4dee-9d6e-70f27c016cc9%7D/favicon.ico" type="image/x-icon">
+	
 	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link href="bootstrap/css/prettify.css" rel="stylesheet">
@@ -45,19 +47,16 @@
       #map{ 
         padding:0px;;
         border:solid 1px #343642;
-        margin:5px 5px 5px 0px;
 		overflow:hidden;
       }
-      #leftPane{
-        width:20%;
-        border-top: solid 1px #343642;
-        border-left: solid 1px #343642;
-        border-bottom: solid 1px #343642;
-        margin:5px 0px 5px 5px;
-        color: #343642;
-        font:100% Georgia,"Times New Roman",Times,serif;
-        /*letter-spacing: 0.05em;*/
-      }
+      
+	  
+	  .row, .col { overflow: hidden; position: absolute; }
+    .row { left: 0; right: 0; }
+    .col { top: 0; bottom: 0; }
+    .scroll-x { overflow-x: auto; }
+    .scroll-y { overflow-y: auto; }
+
      </style>
 
     <script src="https://js.arcgis.com/3.9/"></script>
@@ -90,12 +89,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="//bigmentoring.com/"><img src="images/logo.png" height="35x;"/></a>
+          <a class="navbar-brand" href="//bigmentoring.com/"><img src="images/logo.png" height="35x;" style="margin-top:-10px;"/></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li ><a href="#">Menu</a></li>
-            <li><a href="#about">About</a></li>
 			<li><a href="admin.html">Admin</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contact<b class="caret"></b></a>
@@ -111,12 +109,11 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Suggestions</a></li>
             <li> 
 				<form class="navbar-form navbar-right" action="#" role="search">
 			      <div class="form-group">
 			        <div class="input-group">
-			          <input class="form-control"  id="address" type="search" placeholder="9100 Jollyville Rd, Austin, TX">
+			          <input class="form-control"  id="address" type="search" placeholder="Search">
 			          <span class="input-group-btn">
 			            <button id="locate" data-dojo-type="dijit/form/Button" type="submit" class="btn"></button>
 			          </span>            
@@ -128,29 +125,20 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
+	<div>
+<p id="demo">Click the button to get your coordinates:</p>
 
-    <div class="container" style="padding-top: 60px; background-image: ">
-
-      <!-- Main component for a primary marketing message or call to action -->
-   
-
-	
-	
-	
-	</div> <!-- /container -->
-
-	
+<button onclick="getLocation()">Try It</button>
+	</div>
 	 
 
 	<div id="mainWindow" data-dojo-type="dijit/layout/BorderContainer" 
          data-dojo-props="design:'sidebar', gutters:false" 
-         style="width:100%; height:100%;">
-
-
+		 class="body row scroll-y scroll-x">
 
       <div id="map" 
            data-dojo-type="dijit/layout/ContentPane" 
-           data-dojo-props="region:'center'">
+           data-dojo-props="region:'center'" >
       </div>
     </div>
 			
@@ -171,9 +159,34 @@
 	<script src="js/portamento-min.js"></script>
 
 	<script>
+		var x=document.getElementById("demo");
+		window.onload=function(){
+		
+		
+		function getLocation()
+		  {
+		  if (navigator.geolocation)
+			{
+			navigator.geolocation.getCurrentPosition(showPosition);
+			}
+		  else{x.innerHTML="Geolocation is not supported by this browser.";}
+		  }
+		function showPosition(position)
+		  {
+		  x.innerHTML="Latitude: " + position.coords.latitude + 
+		  "<br>Longitude: " + position.coords.longitude;	
+		  }
+	
+	
+	
 			$(document).ready(function() {
 				$('#sidebar').portamento({gap: 100});	// set a 100px gap rather than the default 10px
+				
+				
+				
 			});	
+			
+			};
 		</script>
 </BODY>
 </HTML>
