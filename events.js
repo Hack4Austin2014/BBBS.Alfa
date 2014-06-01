@@ -1,4 +1,4 @@
-function GetEvents(ids)
+function GetEventsById(ids)
 {
   var arrayTest = new Array();
   var fb = new Firebase("https://amber-fire-6558.firebaseio.com/data/events");
@@ -69,11 +69,43 @@ function setIds(newIds)
   Ids.ids = newIds;
 };
 
-// Filter by Name
+// Filter by Age
 
-function nameFilter(value)
+function FilterByAge(ids)
 {
-//  jQuery("#eventsDiv").
+  var arrayTest = new Array();
+  var fb = new Firebase("https://amber-fire-6558.firebaseio.com/data/events");
+
+  fb.once('value', function(snapshot) {
+    snapshot.forEach(function(userSnap) {
+      var i = 0;
+      // jQuery("#eventsDiv").append("Event: " + userSnap.val().title + "<br/>");
+      if (ids == undefined)
+      {
+          jQuery("#eventsDiv").append("Event: " + userSnap.val().title + "<br/>");
+      }
+      else
+      {
+        ids.forEach(function(idName)
+        {
+          if (userSnap.name() == idName || ids == undefined)
+          {
+            arrayTest.push(userSnap);
+            // console.log(userSnap.val());
+            jQuery("#eventsDiv").append("Event: " + userSnap.val().title + "<br/>");
+            ids.splice(i, 1);
+          }
+        });
+      }
+    });
+
+    setIds(arrayTest);
+
+    console.log(arrayTest);
+
+    // console.log(arrayTest[0]);
+    // console.log(arrayTest.length);
+  });
 
 }
 

@@ -1,0 +1,170 @@
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
+
+<form action="" id="inputEventForm">
+<label>
+Title
+</label>
+<input type="text" id="title">
+<br/>
+<br/>
+
+<label>
+Address
+</label>
+
+<textarea id="address"></textarea>
+<br/>
+<br/>
+<label>
+Age Range
+</label>
+
+<select id="agerange">
+  <option>6 to 10</option>
+  <option>11-14</option>
+  <option>15-19</option>
+</select>
+<br/>
+<br/>
+<label>
+Category
+</label>
+
+<select id="category">
+  <option>Educational</option>
+  <option>Physical</option>
+  <option>Social</option>
+</select>
+<br/>
+<br/>
+
+<label>
+Date Begin
+</label>
+<input type="date" id="datebegin">
+<br/>
+<br/>
+
+
+<label>
+Date End
+</label>
+<input type="date" id="dateend">
+<br/>
+<br/>
+
+<label>
+Description
+</label>
+<textarea id="description"></textarea>
+<br/>
+<br/>
+<label>
+Interval (Days)
+</label>
+<input type="number" value="1" min="1" max="90" id="interval">
+<br/>
+<br/>
+
+<label>
+Open Time
+</label>
+<input type="time" id="opentime">
+<br/>
+<br/>
+
+
+<label>
+Close Time
+</label>
+<input type="time" id="closetime">
+<br/>
+<br/>
+
+<label>
+Picture URL
+</label>
+<input type="url" id="picture">
+<br/>
+<br/>
+<label>
+Highest Cost
+</label>
+$<input type="number" value="0" id="pricerange">
+<br/>
+<br/>
+<label>
+Rating
+</label>
+<input type="number" min="1" max="5" value="5" id="rating">
+<br/>
+<br/>
+<label>
+Tag
+</label>
+<input type="text" id="tag">
+<br/>
+<br/>
+<label>
+Url
+</label>
+<input type="text" id="url">
+<br/>
+<input type="submit">
+</form>
+
+<script>
+  jQuery("#inputEventForm").submit(function(){
+    alert("It worked.");
+    var arrayTest = new Array();
+    var fb = new Firebase("https://amber-fire-6558.firebaseio.com/data/events");
+
+
+    fb.set({address : $("#address").val(), agerange: $("#agerange").val(),
+      category: $("#category").val(), datebegin: $("#datebegin").val(),
+      description: $("#description").val(), interval: $("#interval").val(),
+      opentime: $("#opentime").val(), picture: $("#picture").val(),
+      pricerange: $("#pricerange").val(), rating: $("#rating").val(),
+      tag: $("#tag").val(), title: $("#title").val(), url: $("#url").val()
+    });
+    /*
+
+    fb.once('value', function(snapshot) {
+      snapshot.forEach(function(userSnap) {
+        var i = 0;
+        // jQuery("#eventsDiv").append("Event: " + userSnap.val().title + "<br/>");
+        if (ids == undefined)
+        {
+            jQuery("#eventsDiv").append("Event: " + userSnap.val().title + "<br/>");
+        }
+        else
+        {
+          ids.forEach(function(idName)
+          {
+            if (userSnap.name() == idName || ids == undefined)
+            {
+              arrayTest.push(userSnap);
+              // console.log(userSnap.val());
+              jQuery("#eventsDiv").append("Event: " + userSnap.val().title + "<br/>");
+              ids.splice(i, 1);
+            }
+          });
+        }
+      });
+
+
+      setIds(arrayTest);
+
+      console.log(arrayTest);
+
+      // console.log(arrayTest[0]);
+      // console.log(arrayTest.length);
+    });
+
+      */
+    return false;
+  });
+
+
+</script>
