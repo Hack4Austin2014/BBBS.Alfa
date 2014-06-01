@@ -1,0 +1,34 @@
+Contents of /Users/stefan/Documents/GIT/GitHub.Hack4Austin2014/BBBS.Alfa/phonegap_client/platforms/ios/BBBS/BBBS-Prefix.pch
+-x
+objective-c
+-arch
+x86_64
+-fretain-comments-from-system-headers
+-std=c99
+-fobjc-arc
+-fpascal-strings
+-O0
+-isysroot
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk
+-fexceptions
+-fasm-blocks
+-g
+-fvisibility=hidden
+-fobjc-abi-version=2
+-fobjc-legacy-dispatch
+-mios-simulator-version-min=6.0
+-iquote
+-iquote
+-I/Users/stefan/Documents/GIT/GitHub.Hack4Austin2014/BBBS.Alfa/phonegap_client/platforms/ios/build/Debug-iphonesimulator/include
+-I/Users/stefan/Documents/GIT/GitHub.Hack4Austin2014/BBBS.Alfa/phonegap_client/platforms/ios/build/Debug-iphonesimulator/usr/local/lib/include
+-I/Users/stefan/Documents/GIT/GitHub.Hack4Austin2014/BBBS.Alfa/phonegap_client/platforms/ios/build/UninstalledProducts/include
+-I/Users/stefan/Documents/GIT/GitHub.Hack4Austin2014/BBBS.Alfa/phonegap_client/platforms/ios/build/Debug-iphonesimulator
+-F/Users/stefan/Documents/GIT/GitHub.Hack4Austin2014/BBBS.Alfa/phonegap_client/platforms/ios/build/Debug-iphonesimulator
+-ferror-limit=10
+-working-directory=/Users/stefan/Documents/GIT/GitHub.Hack4Austin2014/BBBS.Alfa/phonegap_client/platforms/ios
+-Xclang
+-detailed-preprocessing-record
+x86_64-apple-darwin13.2.0
+"4.2.1 Compatible Apple LLVM 5.1 (clang-503.0.40)"
+SDK_PRODUCT_BUILD_VERSION=11D167
+11D167
