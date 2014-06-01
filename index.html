@@ -1,4 +1,5 @@
-<HTML>
+<!DOCTYPE html>
+<HTML lang="en">
 <HEAD>
   <title> BBBS Maps </title>
   
@@ -40,23 +41,29 @@
 	
 
     <style>
-      html, body, mainWindow { 
+      html, body, #mainWindow { 
         height: 100%; width: 100%;  
         margin: 0; padding: 0;
       } 
+	  #mainWindow { margin: 0 !important; height: auto;}
       #map{ 
-        padding:0px;;
+        padding:0px;
         border:solid 1px #343642;
-		overflow:hidden;
+        margin:0px auto; 
+		overflow-x: hidden !important ;
+		height: 100%;
+		width: 100% ;
+		
       }
-      
+     
 	  
 	  .row, .col { overflow: hidden; position: absolute; }
     .row { left: 0; right: 0; }
     .col { top: 0; bottom: 0; }
-    .scroll-x { overflow-x: auto; }
+    .scroll-x { overflow-x: hidden !important; }
     .scroll-y { overflow-y: auto; }
 
+    .body.row { top: 50px; bottom: 0px; }
      </style>
 
     <script src="https://js.arcgis.com/3.9/"></script>
@@ -64,7 +71,10 @@
 	
 	
 	<style>
-			#wrapper {overflow: hidden;}
+			#wrapper {
+				overflow: hidden;
+				padding: 25px;
+				}
 			#content {width:486px; margin-right:10px; float:left; }
 			#sidebar {width:284px; padding:10px; background: #fff; color: #000;  border: 1px solid #ccc;float:right; height:400px;}
 			
@@ -94,6 +104,7 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li ><a href="#">Menu</a></li>
+            <li><a href="#about">About</a></li>
 			<li><a href="admin.html">Admin</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contact<b class="caret"></b></a>
@@ -109,6 +120,7 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+           
             <li> 
 				<form class="navbar-form navbar-right" action="#" role="search">
 			      <div class="form-group">
@@ -125,11 +137,6 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
-	<div>
-<p id="demo">Click the button to get your coordinates:</p>
-
-<button onclick="getLocation()">Try It</button>
-	</div>
 	 
 
 	<div id="mainWindow" data-dojo-type="dijit/layout/BorderContainer" 
@@ -141,6 +148,39 @@
            data-dojo-props="region:'center'" >
       </div>
     </div>
+	  <!--
+			<div id="wrapper " class="visible-lg">
+				<div id="sidebar" class="share  ">
+					
+						
+						
+						
+						  <div >
+							<ul>
+							  <li>
+								<label class="share-label" for="share-toggle2 ">Facebook</label>
+								<input  type="checkbox"  data-toggle="switch" />
+							  </li>
+							  <li>
+								<label class="share-label" for="share-toggle4">Twitter</label>
+								<input type="checkbox" checked="" data-toggle="switch" />
+							  </li>
+							  <li>
+								<label class="share-label" for="share-toggle6">Pinterest</label>
+								<input type="checkbox" data-toggle="switch" />
+							  </li>
+							</ul>
+							<a href="#" class="btn btn-primary btn-block btn-large">Go!</a>
+						  </div> 
+						
+					
+					
+					
+					
+				
+				</div>
+
+			</div> wrapper -->
 			
 	<!-- SCRIPTS -->
 
@@ -180,7 +220,7 @@
 	
 	
 			$(document).ready(function() {
-				$('#sidebar').portamento({gap: 100});	// set a 100px gap rather than the default 10px
+				$('#sidebar').portamento({gap: 200});	// set a 100px gap rather than the default 10px
 				
 				
 				
