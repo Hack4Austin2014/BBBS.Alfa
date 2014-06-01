@@ -91,7 +91,7 @@
 
 </HEAD>
 <BODY class="claro" onload="getLocation()">
-	<!-- Fixed navbar -->
+	<!-- NAV BAR FOR BIG SCREENS!!! -->
     <div  class="navbar navbar-inverse navbar-fixed-top visible-md visible-lg" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -181,7 +181,62 @@
 				</div>
 
 			</div> wrapper -->
-			
+	
+	
+				<!-- NAV BAR FOR MOBILE DEVICES SCREENS!!! -->
+			<div  class="navbar navbar-inverse navbar-fixed-top visible-xs visible-sm" role="navigation">
+			  <div class="container">
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+				  <a class="navbar-brand" href="//bigmentoring.com/"><img src="images/logo.png" height="35x;" style="margin-top:-10px;"/></a>
+				</div>
+				<div class="navbar-collapse collapse">
+				  <ul class="nav navbar-nav">
+					<li><a href="admin.html">Admin</a></li>
+					
+				  </ul>
+				  <ul class="nav navbar-nav navbar-right">
+					<li><a href="#" onclick="getLocation();">Find Me</a></li>
+					<li> 
+						<form class="navbar-form navbar-right" action="#" role="search">
+						  <div class="form-group">
+							<div class="input-group">
+							  <input class="form-control"  id="address" type="search" placeholder="Search Address">
+							  <span class="input-group-btn"> 					  
+								<button id="locate"  type="button"  class="searchbtn" onclick="locate();" > Hey!</button>
+							  </span>            
+							</div>
+						  </div>               
+						</form>
+					</li>
+				  </ul>
+				</div><!--/.nav-collapse -->
+			  </div>
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
 	<!-- SCRIPTS -->
 
 	<script src="js/jquery-ui-1.10.3.custom.min.js"></script>
