@@ -1,6 +1,4 @@
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
-
+<div>
 <form action="" id="inputEventForm">
 <label>
 Title
@@ -118,10 +116,10 @@ Url
   jQuery("#inputEventForm").submit(function(){
     alert("It worked.");
     var arrayTest = new Array();
-    var fb = new Firebase("https://amber-fire-6558.firebaseio.com/data/events");
+    var fb2 = new Firebase("https://amber-fire-6558.firebaseio.com/data/events");
 
 
-    fb.set({address : $("#address").val(), agerange: $("#agerange").val(),
+    fb2.set({address : $("#address").val(), agerange: $("#agerange").val(),
       category: $("#category").val(), datebegin: $("#datebegin").val(),
       description: $("#description").val(), interval: $("#interval").val(),
       opentime: $("#opentime").val(), picture: $("#picture").val(),
@@ -130,7 +128,7 @@ Url
     });
     /*
 
-    fb.once('value', function(snapshot) {
+    fb2.once('value', function(snapshot) {
       snapshot.forEach(function(userSnap) {
         var i = 0;
         // jQuery("#eventsDiv").append("Event: " + userSnap.val().title + "<br/>");
@@ -168,3 +166,4 @@ Url
 
 
 </script>
+</div>
