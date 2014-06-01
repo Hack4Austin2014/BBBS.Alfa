@@ -120,8 +120,48 @@
           <input class="form-control"  id="address" type="search" placeholder="9100 Jollyville Rd, Austin, TX">
 		  
           <span class="input-group-btn">
-            <button id="locate"  type="submit" class="btn"><span class="fui-search"></span></button>
-			<button id="locate" data-dojo-type="dijit/form/Button"><i class="fa fa-search"></i></button>
+			
+			
+			
+			
+			
+			
+			
+			<button id="locate"  type="submit" class="btn">
+				
+				
+				<span class="dijit dijitReset dijitInline dijitButton" role="presentation" widgetid="locate">
+					<span class="dijitReset dijitInline dijitButtonNode" role="presentation" data-dojo-attach-event="ondijitclick:__onClick">
+						<span id="locate" class="dijitReset dijitStretch dijitButtonContents" aria-labelledby="locate_label" role="button" data-dojo-attach-point="titleNode,focusNode" tabindex="0" style="-moz-user-select: none;">
+							<span class="dijitReset dijitInline dijitIcon dijitNoIcon" data-dojo-attach-point="iconNode"></span>
+							<span class="dijitReset dijitToggleButtonIconChar">
+								search
+							</span>
+							<span id="locate_label" class="dijitReset dijitInline dijitButtonText" data-dojo-attach-point="containerNode">
+								<span class="fui-search"></span>
+							</span>
+						</span>
+					</span>
+					<input class="dijitOffScreen" type="button" data-dojo-attach-point="valueNode" role="presentation" tabindex="-1" data-dojo-attach-event="onclick:_onClick" value=""></input>
+				</span>
+			</button>
+</span>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
           </span>            
         </div>
