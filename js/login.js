@@ -4,17 +4,16 @@ function login(){
 		var auth = new FirebaseSimpleLogin(fb, function(error, user) {
 		  if (error) {
 		    // an error occurred while attempting login
-		    console.log(error);
+		    return error;
 		  } else if (user) {
 		    // user authenticated with Firebase
-		    console.log('User ID: ' + user.uid + ', Provider: ' + user.provider);
+		    //console.log('User ID: ' + user.uid + ', Provider: ' + user.provider);
+		    return user;
 		  } else {
-		  	
+		  	return null;
 		  	//not logged in
 		  }
 		});
-  
 	});
-
 }
 
