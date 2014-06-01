@@ -8,7 +8,7 @@ function login(){
 		    alert("An error occurred while trying to sign in.");
 		    return ;
 		  } else if (user) {
-		    console.log(user);
+		    console.log("User: ", user);
 		    $( "#main-content" ).load( "inputEvent.html" );
 		    return;
 		  } else {
