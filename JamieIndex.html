@@ -1,0 +1,198 @@
+<HTML>
+<HEAD>
+  <title> BBBS Maps </title>
+  
+	<meta name="author" content="Jose Manriquez, Dan, Thang, Westley, and Jamie">
+	<meta name="description" content="This Web page
+	is an application for BBBS to find places and events 
+	for their matches.">
+	
+	<meta http-equiv="robots" content="robots.txt">
+	
+	<meta name="keywords" content="BBBS, hack,hackathon, hack4austin,
+		big, brothers, sisters, kids, places, locations, events, cheap,
+		free, place, food, fun, children, child
+	">
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link href="bootstrap/css/prettify.css" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<link href="css/styles.css" rel="stylesheet">
+	<link href="css/map.css" rel="stylesheet">
+	
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+     <!--[if lt IE 9]>
+       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+     <![endif]-->
+	 
+	
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!--The viewport meta tag is used to improve the presentation and behavior of the samples 
+      on iOS devices-->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+	
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.9/js/esri/css/esri.css">
+
+	
+
+    <style>
+      html, body, mainWindow { 
+        height: 100%; width: 100%;  
+        margin: 0; padding: 0;
+        overflow: hidden;
+      } 
+      #map{ 
+      width: 100%; height: 100%; 
+        padding:0px;;
+        border:solid 1px #343642;
+        margin:5px 5px 5px 0px;
+		overflow:hidden;
+      }
+      #leftPane{
+        width:20%;
+        border-top: solid 1px #343642;
+        border-left: solid 1px #343642;
+        border-bottom: solid 1px #343642;
+        margin:5px 0px 5px 5px;
+        color: #343642;
+        font:100% Georgia,"Times New Roman",Times,serif;
+        /*letter-spacing: 0.05em;*/
+      }
+	  
+	  .row, .col { overflow: hidden; position: absolute; }
+    .row { left: 0; right: 0; }
+    .col { top: 0; bottom: 0; }
+    .scroll-x { overflow-x: auto; }
+    .scroll-y { overflow-y: auto; }
+
+    .body.row { top: 75px; bottom: 50px; }
+    
+     </style>
+
+    <script src="https://js.arcgis.com/3.9/"></script>
+    <script src="js/mapping.js"></script>
+	
+	
+	<style>
+			#wrapper {overflow: hidden;}
+			#content {width:486px; margin-right:10px; float:left; }
+			#sidebar {width:284px; padding:10px; background: #fff; color: #000;  border: 1px solid #ccc;float:right; height:400px;}
+			
+			#portamento_container {float:right; position:relative;} /* take the positioning of the sidebar, and become the start point for the sidebar positioning */
+			#portamento_container #sidebar {float:none; position:absolute;} /* no need to float anymore, become absolutely positoned */
+			#portamento_container #sidebar.fixed {position:fixed;} /* if the panel is sliding, it needs position:fixed */
+		</style>
+		
+		
+		
+		
+
+</HEAD>
+<BODY class="claro" onload="getLocation()">
+	<!-- Fixed navbar -->
+    <div  class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="//bigmentoring.com/"><img src="images/logo.png" height="35x;" style="margin-top:-10px;"/></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li ><a href="#">Menu</a></li>
+            <li><a href="#about">About</a></li>
+			<li><a href="admin.html">Admin</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contact<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Suggestions</a></li>
+            <li> 
+				<form class="navbar-form navbar-right" action="#" role="search">
+			      <div class="form-group">
+			        <div class="input-group">
+			          <input class="form-control"  id="address" type="search" placeholder="Search">
+			          <span class="input-group-btn">                
+			            <button id="locate"  type="button"  class="searchbtn" onclick="locate();" >Testing</button><button onclick="getLocation();">Try It</button>
+
+			          </span>            
+			        </div>
+			      </div>               
+			    </form>
+			</li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+	<div>
+
+	</div>
+	 
+
+	<div id="mainWindow" >
+      <div id="map">
+      </div>
+    </div>
+			
+	<!-- SCRIPTS -->
+
+	<script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-select.js"></script>
+    <script src="js/bootstrap-switch.js"></script>
+    <script src="js/flatui-checkbox.js"></script>
+    <script src="js/flatui-radio.js"></script>
+    <script src="js/jquery.tagsinput.js"></script>
+    <script src="js/jquery.placeholder.js"></script>
+    <script src="js/typeahead.js"></script>
+    <script src="bootstrap/js/google-code-prettify/prettify.js"></script>
+    <script src="js/application.js"></script>
+	<script src="js/portamento-min.js"></script>
+
+	<script>
+//		var x=document.getElementById("demo");
+
+		function getLocation()
+		  {
+		  if (navigator.geolocation)
+			{
+			navigator.geolocation.getCurrentPosition(showPosition);
+			}
+		  else{x.innerHTML="Geolocation is not supported by this browser.";}
+		  }
+      
+		function showPosition(position)
+		  {
+      ZoomLocation(position.coords.longitude, position.coords.latitude); 
+		  }
+	
+	
+	
+			$(document).ready(function() {
+				$('#sidebar').portamento({gap: 100});	// set a 100px gap rather than the default 10px
+				
+				
+				
+			});	
+			
+			</script>
+</BODY>
+</HTML>

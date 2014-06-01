@@ -14,7 +14,6 @@ require([
   "dijit/layout/BorderContainer", "dijit/layout/ContentPane",
   "dojo/domReady!"
 ],
-
 function (
   Map, esriConfig, SpatialReference, FeatureLayer, Locator, Graphic,
   InfoTemplate, SimpleMarkerSymbol,
@@ -31,6 +30,7 @@ function (
         basemap: "streets",
         center: [-93.5, 41.431],
         zoom: 5,
+        autoResize: true,
         spatialreference: new SpatialReference(102100)
     });
 
@@ -40,23 +40,28 @@ function (
     locator.on("address-to-locations-complete", showResults);
     map.addLayer(eventLayer);
     // listen for button click then geocode
-    registry.byId("locate").on("click", locate);
+    
+    $( "#locate" ).click(locate); 
 
-    map.infoWindow.resize(200, 125);
 
-    function locate() {
-        map.graphics.clear();
-        var address = {
-            "SingleLine": dom.byId("address").value
-        };
-        locator.outSpatialReference = map.spatialReference;
-        var options = {
-            address: address,
-            outFields: ["Loc_name"]
-        }
-        locator.addressToLocations(options);
-    }
 
+//    var searchbtn = registry.byId("locate"); 
+//   searchbtn.on("click", locate);
+//    searchbtn.set('Class', 'searchbtn'); 
+//    map.infoWindow.resize(200, 125);
+
+function locate() {
+     map.graphics.clear();
+      var address = {
+          "SingleLine": $('#address').val()
+      };
+      locator.outSpatialReference = map.spatialReference;
+      var options = {
+          address: address,
+          outFields: ["Loc_name"]
+      }
+      locator.addressToLocations(options);
+  }
     function showResults(evt) {
         var candidate;
         var symbol = new SimpleMarkerSymbol();
@@ -105,13 +110,119 @@ function (
         if (geom !== undefined) {
             map.centerAndZoom(geom, 12);
             //Create drive time polygon
-            CreateDriveTime(geom);
+            CreateDriveTime();
         }
     }
 
 });
 
-function CreateDriveTime(geom) {
+
+function wtf() {
+alert('wtf'); }
+
+function locate2() {
+      alert($('#address').val()); 
+}
+function locate() {
+      alert($('#address').val()); 
+require([
+  "esri/map", "esri/config","esri/geometry/Point", "esri/SpatialReference", "esri/layers/FeatureLayer", "esri/tasks/locator", "esri/graphic",
+  "esri/InfoTemplate", "esri/symbols/SimpleMarkerSymbol",
+  "esri/symbols/Font", "esri/symbols/TextSymbol",
+  "dojo/_base/array", "esri/Color",
+  "dojo/number", "dojo/parser", "dojo/dom", "dijit/registry",
+  "esri/tasks/ServiceAreaTask", "esri/tasks/ServiceAreaParameters",
+  "dijit/form/Button", "dijit/form/Textarea",
+  "dijit/layout/BorderContainer", "dijit/layout/ContentPane",
+  "dojo/domReady!"
+],
+
+
+function 
+(
+  Map, esriConfig, Point, SpatialReference, FeatureLayer, Locator, Graphic,
+  InfoTemplate, SimpleMarkerSymbol,
+  Font, TextSymbol,
+  arrayUtils, Color,
+  number, parser, dom, registry, ServiceAreaTask, ServiceAreaParameters
+    ){
+      map.graphics.clear();
+      var address = {
+          "SingleLine": $('#address').val()
+      };
+      locator.outSpatialReference = map.spatialReference;
+      var options = {
+          address: address,
+          outFields: ["Loc_name"]
+      }
+      locator.addressToLocations(options);
+  
+}
+);}
+
+
+function ZoomLocation(lng, lat)
+{
+
+require([
+  "esri/map", "esri/config","esri/geometry/Point", "esri/SpatialReference", "esri/layers/FeatureLayer", "esri/tasks/locator", "esri/graphic",
+  "esri/InfoTemplate", "esri/symbols/SimpleMarkerSymbol",
+  "esri/symbols/Font", "esri/symbols/TextSymbol",
+  "dojo/_base/array", "esri/Color",
+  "dojo/number", "dojo/parser", "dojo/dom", "dijit/registry",
+  "esri/tasks/ServiceAreaTask", "esri/tasks/ServiceAreaParameters",
+  "dijit/form/Button", "dijit/form/Textarea",
+  "dijit/layout/BorderContainer", "dijit/layout/ContentPane",
+  "dojo/domReady!"
+],
+
+
+function (
+  Map, esriConfig, Point, SpatialReference, FeatureLayer, Locator, Graphic,
+  InfoTemplate, SimpleMarkerSymbol,
+  Font, TextSymbol,
+  arrayUtils, Color,
+  number, parser, dom, registry, ServiceAreaTask, ServiceAreaParameters
+    ) {
+        var symbol = new SimpleMarkerSymbol();
+        var infoTemplate = new InfoTemplate(
+          "Location",
+          "Address: ${address}<br />Score: ${score}<br />Source locator: ${locatorName}"
+        );
+        symbol.setStyle(SimpleMarkerSymbol.STYLE_SQUARE);
+        symbol.setColor(new Color([153, 0, 51, 0.75]));
+
+        var geom = new Point(lng, lat); 
+addressGraphic = new Graphic(geom, symbol);
+                //add a graphic to the map at the geocoded location
+                map.graphics.add(addressGraphic);
+                //add a text symbol to the map listing the location of the matched address.
+                var displayText = "Your current location";
+                var font = new Font(
+                  "16pt",
+                  Font.STYLE_NORMAL,
+                  Font.VARIANT_NORMAL,
+                  Font.WEIGHT_BOLD,
+                  "Helvetica"
+                );
+
+                var textSymbol = new TextSymbol(
+                  displayText,
+                  font,
+                  new Color("#666633")
+                );
+                textSymbol.setOffset(0, 8);
+
+                map.graphics.add(new Graphic(geom, textSymbol)); 
+
+            map.centerAndZoom(geom, 12);     
+            CreateDriveTime(); 
+    }
+    
+);
+}
+
+function CreateDriveTime() {
     require([
       "esri/map", "esri/config", "esri/SpatialReference",
       "esri/tasks/ServiceAreaTask", "esri/tasks/ServiceAreaParameters", "esri/tasks/FeatureSet",
