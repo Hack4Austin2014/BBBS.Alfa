@@ -98,7 +98,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="//bigmentoring.com/"><img src="images/logo.png" height="35x;"/></a>
+          <a class="navbar-brand" href="//bigmentoring.com/"><img src="images/logo.png" height="35x;" style="margin-top:-10px;"/></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -136,19 +136,15 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
-
+	<p id="demo">Click the button to get your coordinates:</p>
+<button onclick="getLocation()">Try It</button>
 
 	
 	 
 
 	<div id="mainWindow" data-dojo-type="dijit/layout/BorderContainer" 
          data-dojo-props="design:'sidebar', gutters:false" 
-         
-		 class="body row scroll-y scroll"
-		 
-		 >
-
-
+		 class="body row scroll-y scroll-x">
 
       <div id="map" 
            data-dojo-type="dijit/layout/ContentPane" 
@@ -173,8 +169,28 @@
 	<script src="js/portamento-min.js"></script>
 
 	<script>
+		var x=document.getElementById("demo");
+		function getLocation()
+		  {
+		  if (navigator.geolocation)
+			{
+			navigator.geolocation.getCurrentPosition(showPosition);
+			}
+		  else{x.innerHTML="Geolocation is not supported by this browser.";}
+		  }
+		function showPosition(position)
+		  {
+		  x.innerHTML="Latitude: " + position.coords.latitude + 
+		  "<br>Longitude: " + position.coords.longitude;	
+		  }
+	
+	
+	
 			$(document).ready(function() {
 				$('#sidebar').portamento({gap: 100});	// set a 100px gap rather than the default 10px
+				
+				
+				
 			});	
 		</script>
 </BODY>
