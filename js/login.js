@@ -5,7 +5,7 @@ function login(){
 		  if (error) {
 		    // an error occurred while attempting login
 		    console.log(error);
-		    alert("Incorrect email address or password");
+		    alert("An error occurred while trying to sign in.");
 		    return ;
 		  } else if (user) {
 		    console.log(user);
@@ -17,7 +17,7 @@ function login(){
 		  	  email: $('#inputEmail3').val(),
 		  	  password: $('#inputPassword3').val()
 		  	});
-
+		  	console.log(usr);
 		  	if(!usr)
 		  		alert("Incorrect email address or password.");
 		    return;
