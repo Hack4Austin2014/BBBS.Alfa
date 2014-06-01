@@ -1,0 +1,24 @@
+.eventHolder{
+
+	 width: 90%;  
+	 margin: 0 auto; 
+	 padding: 0; 
+	 border: 10px solid; 
+	 border-bottom-color: #7C3B97; 
+	 border-right-color:#7C3B97; 
+	 border-top-color:#9b59b6; 
+	 border-left-color:#9b59b6;  
+	 border-radius: 10px;  
+	 border: 10px solid #7C3B97;
+
+}
+
+
+
+.col-md-1{
+	border-style:solid;
+	border-width:2px;
+	border-color: #7C3B97;
+	background:#fff;
+	border-radius: 2px; 
+}
