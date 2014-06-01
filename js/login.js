@@ -5,11 +5,11 @@ function login(){
 		  if (error) {
 		    // an error occurred while attempting login
 		    console.log(error);
-		    return error;
+		    alert("Incorrect email address or password");
+		    return ;
 		  } else if (user) {
-		    // user authenticated with Firebase
-		    //console.log('User ID: ' + user.uid + ', Provider: ' + user.provider);
-		    return user;
+		    $( "#main-content" ).load( "admin-content.html" );
+		    return;
 		  } else {
 		  	return null;
 		  	//not logged in

@@ -1,4 +1,5 @@
-<HTML>
+<!DOCTYPE html>
+<HTML lang="en">
 <HEAD>
   <title> BBBS Maps </title>
   
@@ -13,13 +14,12 @@
 		big, brothers, sisters, kids, places, locations, events, cheap,
 		free, place, food, fun, children, child
 	">
-	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	
     <link href="bootstrap/css/prettify.css" rel="stylesheet">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="js/login.js"></script>
-	<link href="css/styles.css" rel="stylesheet">
+	
 	
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
      <!--[if lt IE 9]>
@@ -28,21 +28,6 @@
      <![endif]-->
 	 
 	
-	
-	<style>
-	
-			body{
-				
-			}
-			#wrapper {overflow: hidden;}
-			#content {width:486px; margin-right:10px; float:left; min-height:1200px; }
-			#sidebar {width:284px; padding:10px; background: #fff; color: #000;  border: 1px solid #ccc;float:right; height:400px;}
-			
-			#portamento_container {float:right; position:relative;} /* take the positioning of the sidebar, and become the start point for the sidebar positioning */
-			#portamento_container #sidebar {float:none; position:absolute;} /* no need to float anymore, become absolutely positoned */
-			#portamento_container #sidebar.fixed {position:fixed;} /* if the panel is sliding, it needs position:fixed */
-		</style>
-
 </HEAD>
 <BODY>
 	<!-- Fixed navbar -->
@@ -84,56 +69,36 @@
       </div>
     </div>
 
-    <div class="container" style="padding-top: 60px; background-image: ">
-
-      <!-- Main component for a primary marketing message or call to action -->
-    
-
-      			<div id="wrapper " class="hd-sm">
-      				<div id="sidebar" class="share  ">
-      					<div class="row">
-  						  <div >
-  							<ul>
-  							  <li>
-  								<label class="share-label" for="share-toggle2 ">Facebook</label>
-  								<input  type="checkbox"  data-toggle="switch" />
-  							  </li>
-  							  <li>
-  								<label class="share-label" for="share-toggle4">Twitter</label>
-  								<input type="checkbox" checked="" data-toggle="switch" />
-  							  </li>
-  							  <li>
-  								<label class="share-label" for="share-toggle6">Pinterest</label>
-  								<input type="checkbox" data-toggle="switch" />
-  							  </li>
-  							</ul>
-  							<a href="#" class="btn btn-primary btn-block btn-large">Go!</a>
-  						  </div> 
-      					</div>
-      				</div>
-          		</div> <!-- /container -->
-
-	
-	<div id="main-content">
-		<div class="container">
-	      <form class="form-signin" role="form">
-	        <h2 class="form-signin-heading">Please sign in</h2>
-	        <input type="email" class="form-control" placeholder="Email address" required="" autofocus="">
-	        <input type="password" class="form-control" placeholder="Password" required="">
-	        <label class="checkbox">
-	          <input type="checkbox" value="remember-me"> Remember me
-	        </label>
-	        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-	      </form>
-	    </div>
-	</div>
-
-	
-
-
-
-	<script>login();</script>
-
+<div id="main-content" class="container" style="padding-top: 80px">
+  <form class="form-horizontal" role="form" onsubmit="login()">
+    <div class="form-group">
+      <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+      <div class="col-sm-5">
+        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+      <div class="col-sm-5">
+        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"> Remember me
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Sign in</button>
+      </div>
+    </div>
+  </form>
+  </div>
 
 	<!-- SCRIPTS -->
 
