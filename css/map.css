@@ -5,3 +5,19 @@
   height:32px;
   border: 0;
 }
+
+
+#InfoDiv {
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+
+    height: 400px;
+    width: 200px;
+    background-color: #FFF;
+    color: black;
+
+    padding: 0;
+}
