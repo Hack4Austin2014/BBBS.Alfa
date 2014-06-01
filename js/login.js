@@ -1,5 +1,6 @@
 function login(){
 		var fb = new Firebase('https://amber-fire-6558.firebaseio.com');
+		console.log(fb);
 		var auth = new FirebaseSimpleLogin(fb, function(error, user) {
 		  if (error) {
 		    // an error occurred while attempting login
