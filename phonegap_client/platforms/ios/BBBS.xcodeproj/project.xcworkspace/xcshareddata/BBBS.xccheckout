@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>74EA7F8F-A15B-46D8-BAA2-B9E0419D96DC</string>
+	<key>IDESourceControlProjectName</key>
+	<string>BBBS</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>EE11AAF1-A06B-4247-8FD3-450545278A14</key>
+		<string>https://github.com/Hack4Austin2014/BBBS.Alfa.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>phonegap_client/platforms/ios/BBBS.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>EE11AAF1-A06B-4247-8FD3-450545278A14</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Hack4Austin2014/BBBS.Alfa.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EE11AAF1-A06B-4247-8FD3-450545278A14</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EE11AAF1-A06B-4247-8FD3-450545278A14</string>
+			<key>IDESourceControlWCCName</key>
+			<string>BBBS.Alfa</string>
+		</dict>
+	</array>
+</dict>
+</plist>
