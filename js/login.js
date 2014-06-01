@@ -23,7 +23,7 @@ function login(){
 		  	if(!!usr._id)
 		  		alert("Incorrect email address or password.");
 		  	else{
-		  		$( "#main-content" ).load( "inputEvent.html" );
+		  		$( "#main-content" ).html( "HELLO!" );
 		  	}
 		    return;
 		  }
