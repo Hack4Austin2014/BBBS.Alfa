@@ -1,0 +1,25 @@
+<html>
+
+<head>
+	<script src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
+	<script src='https://cdn.firebase.com/js/simple-login/1.4.1/firebase-simple-login.js'></script>
+</head>
+
+
+
+<body>
+
+	<script>
+		var chatRef = new Firebase('https://amber-fire-6558.firebaseio.com');
+		var user="";
+		var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
+		});
+
+		console.log(auth);
+
+	</script>
+
+
+</body>
+
+</html>

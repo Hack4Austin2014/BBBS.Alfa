@@ -1,0 +1,185 @@
+<div>
+<form action="" id="inputEventForm">
+<label>
+Title
+</label>
+<input type="text" id="title">
+<br/>
+<br/>
+
+<label>
+Address:
+</label>
+
+<div id="address" style="padding-left: 30px;">
+  <label>Street1</label>
+  <input type="text" id="street1">
+  <br/>
+  <label>Street2</label>
+  <input type="text" id="street2">
+  <br/>
+  <label>City</label>
+  <input type="text" id="city">
+  <br/>
+  <label>State</label>
+  <input type="text" id="state">
+  <br/>
+  <label>Zip</label>
+  <input type="text" id="zip">
+  <br/>
+</div>
+<br/>
+<br/>
+<label>
+Age Range
+</label>
+
+<select id="agerange">
+  <option>6 to 10</option>
+  <option>11-14</option>
+  <option>15-19</option>
+</select>
+<br/>
+<br/>
+<label>
+Category
+</label>
+
+<select id="category">
+  <option>Educational</option>
+  <option>Physical</option>
+  <option>Social</option>
+</select>
+<br/>
+<br/>
+
+<label>
+Date Begin
+</label>
+<input type="date" id="datebegin">
+<br/>
+<br/>
+
+
+<label>
+Description
+</label>
+<textarea id="description"></textarea>
+<br/>
+<br/>
+<label>
+Interval (Days)
+</label>
+<input type="text" id="interval">
+<br/>
+<br/>
+
+<label>
+Open Time
+</label>
+<input type="text" id="opentime">
+<br/>
+<br/>
+
+
+<label>
+Picture URL
+</label>
+<input type="url" id="picture">
+<br/>
+<br/>
+<label>
+Highest Cost
+</label>
+$<input type="number" value="0" id="pricerange">
+<br/>
+<br/>
+<label>
+Rating
+</label>
+<input type="number" min="1" max="5" value="5" id="rating">
+<br/>
+<br/>
+<label>
+Tag
+</label>
+<input type="text" id="tag">
+<br/>
+<br/>
+<label>
+Url
+</label>
+<input type="url" id="url">
+<br/>
+<input type="submit">
+</form>
+
+<script>
+  jQuery("#inputEventForm").submit(function(){
+    alert("It worked.");
+    var arrayTest = new Array();
+   // var fb2 = new Firebase("https://amber-fire-6558.firebaseio.com/data/events");
+	
+	var jsonData = {address : {street1: $("#street1").val(), street2: $("#street2").val(),
+      city: $("#city").val(), state: $("#state").val(), zip: $("#zip").val()},
+      agerange: $("#agerange").val(),
+      category: $("#category").val(), datebegin: $("#datebegin").val(),
+      description: $("#description").val(), interval: $("#interval").val(),
+      opentime: $("#opentime").val(), picture: $("#picture").val(),
+      pricerange: $("#pricerange").val(), rating: $("#rating").val(),
+      tag: $("#tag").val(), title: $("#title").val(), url: $("#url").val()
+    }; 
+   // fb2.push(jsonData);
+	
+	addSpatialData(jsonData); 
+
+    /*
+    fb2.put({address : {street1: $("#street1").val(), street2: $("#street2").val(),
+      city: $("#city").val(), state: $("#state").val(), zip:  $("$zip").val()},
+      agerange: $("#agerange").val(),
+      category: $("#category").val(), datebegin: $("#datebegin").val(),
+      description: $("#description").val(), interval: $("#interval").val(),
+      opentime: $("#opentime").val(), picture: $("#picture").val(),
+      pricerange: $("#pricerange").val(), rating: $("#rating").val(),
+      tag: $("#tag").val(), title: $("#title").val(), url: $("#url").val()
+    });
+
+    fb2.once('value', function(snapshot) {
+      snapshot.forEach(function(userSnap) {
+        var i = 0;
+        // jQuery("#eventsDiv").append("Event: " + userSnap.val().title + "<br/>");
+        if (ids == undefined)
+        {
+            jQuery("#eventsDiv").append("Event: " + userSnap.val().title + "<br/>");
+        }
+        else
+        {
+          ids.forEach(function(idName)
+          {
+            if (userSnap.name() == idName || ids == undefined)
+            {
+              arrayTest.push(userSnap);
+              // console.log(userSnap.val());
+              jQuery("#eventsDiv").append("Event: " + userSnap.val().title + "<br/>");
+              ids.splice(i, 1);
+            }
+          });
+        }
+      });
+
+
+      setIds(arrayTest);
+
+      console.log(arrayTest);
+
+      // console.log(arrayTest[0]);
+      // console.log(arrayTest.length);
+    });
+
+      */
+    return false;
+  });
+
+
+</script>
+</div>
