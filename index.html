@@ -112,7 +112,7 @@
             <li> <form class="navbar-form navbar-right" action="#" role="search">
       <div class="form-group">
         <div class="input-group">
-          <input class="form-control"  id="address" type="search" placeholder="9100 Jollyville Rd, Austin, TX<">
+          <input class="form-control"  id="address" type="search" placeholder="9100 Jollyville Rd, Austin, TX">
 		  
           <span class="input-group-btn">
             <button id="locate" data-dojo-type="dijit/form/Button" type="submit" class="btn"><span class="fui-search"></span></button>
@@ -133,7 +133,7 @@
     
 
 				<div id="wrapper " class="hd-sm">
-				<div id="sidebar" class="share  ">
+				<div id="sidebar" class="share  " style="display: none;">
 					<div class="row">
 						
 						
@@ -167,18 +167,7 @@
          data-dojo-props="design:'sidebar', gutters:false" 
          style="width:100%; height:100%;">
 
-      <div id="leftPane"
-           data-dojo-type="dijit/layout/ContentPane" 
-           data-dojo-props="region:'left'">
-        Enter an address then click the locate button to use a sample address locator to return the location for 
-        street addresses in the United States. 
-        <br>
 
-        <textarea type="text" id="address"/>9100 Jollyville Rd, Austin, TX</textArea>
-        <br>
-
-        <button id="locate" data-dojo-type="dijit/form/Button">Locate</button> 
-      </div>
 
       <div id="map" 
            data-dojo-type="dijit/layout/ContentPane" 
