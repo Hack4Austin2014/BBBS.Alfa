@@ -373,7 +373,9 @@ function showResults(result) {
     }
     if (fbID.length > 0)
     {
-      GetEvents(fbID); 
+    
+      GetEvents2(fbID); 
+
     }
 }
 
@@ -412,6 +414,54 @@ function GetEvents(ids)
       console.log(resultHtml); 
       $('#resultList').append('<li><a href="#">' + resultHtml + '</a><div>' + detailHtml + '</div></li>'); 
     });
+}); 
+}    
+
+function GetEvents2(ids)
+{
+  var arrayTest = new Array();
+  var fb = new Firebase("https://amber-fire-6558.firebaseio.com/data/events");
+
+  $('#searchList').empty(); 
+  $('#searchList').append('<div class="sHeader">Search Results<a style="float: right;" href="#" onclick="toggleFilter();"><img width="20px" height="20px" src="images/filter.png"></a></div>');
+  $('#searchList').append('<div class="sHeader" id="filterBox" style="display: none;"><table><tr><td>Age Range:</td><td><select name="AgeRange"><option value="Elementary (6 to 10)">Elementary (6 to 10)</option><option value="Middle School (11 to 14)">Middle School (11 to 14)</option><option value="High School (15 to 19)">High School (15 to 19)</option></select></td></tr><tr><td>Price Range:</td><td><select name="PriceRange"><option value="$ (less than $10)">$ (less than $10)</option></select></td></tr></table></div>');
+  
+  var bFlip = false; 
+  fb.once('value', function(snapshot) {
+    snapshot.forEach(function(userSnap) {
+      var resultHtml = ''; 
+      var i = 0;
+      // jQuery("#eventsDiv").append("Event: " + userSnap.val().title + "<br/>");
+      if (ids == undefined)
+      {
+          jQuery("#eventsDiv").append("Event: " + userSnap.val().title + "<br/>");
+      }
+      else
+      {
+        ids.forEach(function(idName)
+        {
+          if (userSnap.name() == idName || ids == undefined)
+          {
+            arrayTest.push(userSnap);
+            var info = userSnap.val(); 
+            // console.log(userSnap.val());
+            resultHtml = "<img src='images/eventpics/" + info.picture + "' width='60px' height='60px'/><a href='#' onclick='exp(\'" + userSnap.name() + "\');' class='d'>" + info.title + "</a><img style='float: right;' src='images/" + info.category + ".png' width='20px' height='20px' title='" + info.category + "' /><br/><span><b>Age:</b><span class='d'>" + info.agerange + "</span>&nbsp;&nbsp;&nbsp;&nbsp;<b>Price:</b><span class='d'>" + info.pricerange + "</span></span>";
+            resultHtml += "<div class='sDetail' id='" + userSnap.name() + "'>" + info.description + "</div>";
+            ids.splice(i, 1);
+            console.log(resultHtml); 
+            if (bFlip)
+            {
+            $('#searchList').append('<div class="s sItem">' + resultHtml + '</div>'); 
+            }
+            else
+            {
+            $('#searchList').append('<div class="s sItem2">' + resultHtml + '</div>'); 
+            }
+            bFlip = !bFlip;
+          }
+        });
+      }
+    });
     
 //    setIds(arrayTest);
 
@@ -421,4 +471,15 @@ function GetEvents(ids)
     // console.log(arrayTest.length);
   });
 
+}
+
+function exp(id)
+{
+console.log(id);
+$('#' + id).toggle(); 
+}
+
+function toggleFilter()
+{
+ $('#filterBox').toggle(500); 
 }
