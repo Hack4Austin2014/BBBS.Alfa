@@ -14,7 +14,7 @@ function login(){
 		    loadContent();
 		    return;
 		  } else {
-		  	console.log("attempting to login");
+		  	console.log("attempting to login with: ", $('#inputEmail3').val(), "and", $('#inputPassword3').val());
 
 		  	var usr = auth.login('password', {
 		  	  email: $('#inputEmail3').val(),
