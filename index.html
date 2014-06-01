@@ -59,13 +59,13 @@
       }
      
 	  
-	  .row, .col { overflow: hidden; position: absolute; }
-    .row { left: 0; right: 0; }
+	  .rows, .col { overflow: hidden; position: absolute; }
+    .rows { left: 0; right: 0; }
     .col { top: 0; bottom: 0; }
     .scroll-x { overflow-x: hidden !important; }
     .scroll-y { overflow-y: auto; }
 
-    .body.row { top: 50px; bottom: 0px; }
+    .body.rows { top: 50px; bottom: 0px; }
      </style>
 
     <script src="https://js.arcgis.com/3.9/"></script>
@@ -141,7 +141,7 @@
 
 	<div id="mainWindow" data-dojo-type="dijit/layout/BorderContainer" 
          data-dojo-props="design:'sidebar', gutters:false" 
-		 class="body row scroll-y scroll-x visible-md visible-lg">
+		 class="body rows scroll-y scroll-x visible-md visible-lg">
 
       <div id="map" 
            data-dojo-type="dijit/layout/ContentPane" 
