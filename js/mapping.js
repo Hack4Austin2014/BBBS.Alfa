@@ -2,12 +2,15 @@
 var serviceAreaTask, params, clickpoint, ServiceAreaParameters, arrayUtils;
 var addressGraphic; var areaGraphic;
 var eventLayer;
+var trafficLayer; 
 
 require([
-  "esri/map", "esri/config", "esri/SpatialReference", "esri/layers/FeatureLayer", "esri/tasks/locator", "esri/graphic",
+  "esri/map", "esri/config", "esri/layers/ArcGISDynamicMapServiceLayer", "esri/SpatialReference", "esri/layers/FeatureLayer", "esri/tasks/locator", "esri/graphic",
   "esri/InfoTemplate", "esri/symbols/SimpleMarkerSymbol",
   "esri/symbols/Font", "esri/symbols/TextSymbol",
-  "dojo/_base/array", "esri/Color",
+  "dojo/_base/array", "esri/Color",              "esri/tasks/GeometryService",
+          "esri/tasks/BufferParameters","esri/tasks/IdentifyTask","esri/tasks/IdentifyParameters",
+          "esri/symbols/SimpleFillSymbol","esri/symbols/SimpleLineSymbol",
   "dojo/number", "dojo/parser", "dojo/dom", "dijit/registry",
   "esri/tasks/ServiceAreaTask", "esri/tasks/ServiceAreaParameters",
   "dijit/form/Button", "dijit/form/Textarea",
@@ -15,11 +18,11 @@ require([
   "dojo/domReady!"
 ],
 function (
-  Map, esriConfig, SpatialReference, FeatureLayer, Locator, Graphic,
+  Map, esriConfig, ArcGISDynamicMapServiceLayer, SpatialReference, FeatureLayer, Locator, Graphic,
   InfoTemplate, SimpleMarkerSymbol,
   Font, TextSymbol,
-  arrayUtils, Color,
-  number, parser, dom, registry, ServiceAreaTask, ServiceAreaParameters
+  arrayUtils, Color,GeometryService, BufferParameters,IdentifyTask, IdentifyParameters,
+  SimpleFillSymbol,SimpleLineSymbol,number, parser, dom, registry, ServiceAreaTask, ServiceAreaParameters
     ) {
     parser.parse();
 
@@ -31,14 +34,36 @@ function (
         center: [-93.5, 41.431],
         zoom: 5,
         autoResize: true,
-        spatialreference: new SpatialReference(102100)
+        spatialReference: new SpatialReference(102100)
     });
+
+    var gsvc = new GeometryService("http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer");
+
+    map.on("click", executeIdentifyTask);
+          //create identify tasks and setup parameters
+          identifyTask = new IdentifyTask("http://services2.arcgis.com/DlASPyTb2UPEalFT/arcgis/rest/services/BBBS_Address/FeatureServer/0/query");
+
+          identifyParams = new IdentifyParameters();
+          identifyParams.tolerance = 10;
+          identifyParams.returnGeometry = true;
+          //identifyParams.layerIds = [0];
+          identifyParams.layerOption = IdentifyParameters.LAYER_OPTION_ALL;
+          identifyParams.width = map.width;
+          identifyParams.height = map.height;
+
+   // trafficLayer = new ArcGISDynamicMapServiceLayer("http://gis.srh.noaa.gov/arcgis/rest/services/RIDGERadar/MapServer"); 
+  
+//    map.addLayer(trafficLayer); 
 
     eventLayer = new FeatureLayer("http://services2.arcgis.com/DlASPyTb2UPEalFT/arcgis/rest/services/BBBS_Address/FeatureServer/0", { "id": "BPPAS" });
 
     locator = new Locator("http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer");
     locator.on("address-to-locations-complete", showResults);
     map.addLayer(eventLayer);
+    
+    
+    var identifyTask, identifyParams;
+
     // listen for button click then geocode
     
     $( "#locate" ).click(locate); 
@@ -49,6 +74,62 @@ function (
 //   searchbtn.on("click", locate);
 //    searchbtn.set('Class', 'searchbtn'); 
 //    map.infoWindow.resize(200, 125);
+
+  function executeIdentifyTask (event) {
+        var g = event.mapPoint;
+          g.setSpatialReference(new SpatialReference(102100));
+  
+  var params = new BufferParameters();
+      params.distances = [ 500 ];
+      params.bufferSpatialReference = new esri.SpatialReference({wkid: 102100});
+      params.outSpatialReference = map.spatialReference;
+      params.unit = GeometryService['Feet'];
+      params.geometries = [g];
+    gsvc.buffer(params, showBuffer);
+}
+
+function showBuffer(bufferedGeometries) {
+      var symbol = new SimpleFillSymbol(
+        SimpleFillSymbol.STYLE_SOLID,
+        new SimpleLineSymbol(
+          SimpleLineSymbol.STYLE_SOLID,
+          new Color([255,0,0,0.65]), 2
+        ),
+        new Color([255,0,0,0.35])
+      );
+
+   // var graphic = new Graphic(bufferedGeometries[0], symbol);
+   //     map.graphics.add(graphic);
+
+
+          identifyParams.geometry = bufferedGeometries[0];
+          var e = map.extent;
+          e.setSpatialReference(new SpatialReference(102100));
+          identifyParams.mapExtent = e;
+
+          var deferred = identifyTask
+            .execute(identifyParams)
+            .addCallback(function (response) {
+              // response is an array of identify result objects
+              // Let's return an array of features.
+              return arrayUtils.map(response, function (result) {
+                var feature = result.feature;
+                alert(feature.attributes['ID']); 
+              });
+            });
+
+      }
+
+
+
+          // InfoWindow expects an array of features from each deferred
+          // object that you pass. If the response from the task execution
+          // above is not an array of features, then you need to add a callback
+          // like the one above to post-process the response and return an
+          // array of features.
+          //map.infoWindow.setFeatures([deferred]);
+          //map.infoWindow.show(event.mapPoint);
+        
 
 function locate() {
      map.graphics.clear();
@@ -120,47 +201,16 @@ function locate() {
 function wtf() {
 alert('wtf'); }
 
-function locate2() {
-      alert($('#address').val()); 
-}
-function locate() {
-      alert($('#address').val()); 
-require([
-  "esri/map", "esri/config","esri/geometry/Point", "esri/SpatialReference", "esri/layers/FeatureLayer", "esri/tasks/locator", "esri/graphic",
-  "esri/InfoTemplate", "esri/symbols/SimpleMarkerSymbol",
-  "esri/symbols/Font", "esri/symbols/TextSymbol",
-  "dojo/_base/array", "esri/Color",
-  "dojo/number", "dojo/parser", "dojo/dom", "dijit/registry",
-  "esri/tasks/ServiceAreaTask", "esri/tasks/ServiceAreaParameters",
-  "dijit/form/Button", "dijit/form/Textarea",
-  "dijit/layout/BorderContainer", "dijit/layout/ContentPane",
-  "dojo/domReady!"
-],
 
+function addTraffic()
+{
 
-function 
-(
-  Map, esriConfig, Point, SpatialReference, FeatureLayer, Locator, Graphic,
-  InfoTemplate, SimpleMarkerSymbol,
-  Font, TextSymbol,
-  arrayUtils, Color,
-  number, parser, dom, registry, ServiceAreaTask, ServiceAreaParameters
-    ){
-      map.graphics.clear();
-      var address = {
-          "SingleLine": $('#address').val()
-      };
-      locator.outSpatialReference = map.spatialReference;
-      var options = {
-          address: address,
-          outFields: ["Loc_name"]
-      }
-      locator.addressToLocations(options);
+require(["esri/layers/ArcGISDynamicMapServiceLayer"], function(ArcGISDynamicMapServiceLayer) 
+{ 
+ // trafficLayer = new ArcGISDynamicMapServiceLayer("http://traffic.arcgis.com/arcgis/rest/services/World/Traffic/MapServer?token=XYOPXRdr3-Po6ikWBhtkvm1Wa-LGSnljjGZ3zjczIh9cKnku4Xcy6CTgGXDpNhpn_vPnMUC0auVX92wcSEOKTlYNXHUHdN734wac26PymYiNBvHmqD4ZTikdXH4nLLXlwv8f122ZxKnrv1HJhJP4Ew.."); 
   
+});
 }
-);}
-
-
 function ZoomLocation(lng, lat)
 {
 
@@ -314,5 +364,61 @@ function QueryAddress() {
 }
 
 function showResults(result) {
-    alert("Number of results: " + result.features.length);
+    //alert("Number of results: " + result.features.length);
+    var fbID = []; 
+    for (i = 0; i < result.features.length; i++)
+    {
+        console.log(result.features[i].attributes.ID); 
+        fbID.push(result.features[i].attributes.ID); 
+    }
+    if (fbID.length > 0)
+    {
+      GetEvents(fbID); 
+    }
+}
+
+
+function GetEvents(ids)
+{
+  var arrayTest = new Array();
+  var fb = new Firebase("https://amber-fire-6558.firebaseio.com/data/events");
+
+  $('#InfoDiv').empty(); 
+  fb.once('value', function(snapshot) {
+    snapshot.forEach(function(userSnap) {
+      var resultHtml = ''; 
+      var detailHtml = ''; 
+      var i = 0;
+      // jQuery("#eventsDiv").append("Event: " + userSnap.val().title + "<br/>");
+      if (ids == undefined)
+      {
+          jQuery("#eventsDiv").append("Event: " + userSnap.val().title + "<br/>");
+      }
+      else
+      {
+        ids.forEach(function(idName)
+        {
+          if (userSnap.name() == idName || ids == undefined)
+          {
+            arrayTest.push(userSnap);
+            var info = userSnap.val(); 
+            // console.log(userSnap.val());
+            resultHtml += "<img src='eventpics/" + info.picture + "' width='60px' height='60px'>" + info.title + "<br/>";
+			detailHtml += info.description; 
+            ids.splice(i, 1);
+          }
+        });
+      }
+      console.log(resultHtml); 
+      $('#resultList').append('<li><a href="#">' + resultHtml + '</a><div>' + detailHtml + '</div></li>'); 
+    });
+    
+//    setIds(arrayTest);
+
+ //   console.log(arrayTest);
+
+    // console.log(arrayTest[0]);
+    // console.log(arrayTest.length);
+  });
+
 }

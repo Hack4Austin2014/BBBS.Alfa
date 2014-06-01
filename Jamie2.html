@@ -16,35 +16,34 @@
     </div>
 
     <script>
-    var json; 
+   
     var locator;
     
     function batchAdd()
     {
-      jArray = [
-{
-	"title": "Republic Square Park",
+      jArray = [{
+	"title": "Austin's Farmer Market",
 	"description": "Features fresh organic produce, meats, and cheeses straight from surrounding Texas farms, plus live music every week.",
 	"address": {
 		"street1": "422 Guadalupe",
 		"city": "Austin",
 		"state": "TX",
-		"zip": ""
+		"zip": "78701"
 	},
 	"datebegin": "7/1/2014",
 	"dateend": null,
 	"interval": "Every week",
 	"agerange": "6 to 18",
-	"pricerange": "N/A",
+	"pricerange": "Free",
 	"category": "Social",
-	"rating": 5,
+	"rating": 0,
 	"picture": "austinfarmermarket.jpg",
 	"url": "http://www.austinfarmersmarket.org/",
 	"opentime": "9am – 1pm",
 	"tag": "Recommended"
 },
 {
-	"title": "Palmer Events Center",
+	"title": "Youth Council Career Fest",
 	"description": "The event’s focus is to assist young adults (high school students) in career exploration. We are contacting companies that may have internship opportunities as well as companies that are interested in showcasing what they do as a means for peaking interest in young adults. This is a FREE event! We will have U21 bands playing during the event.",
 	"address": {
 		"street1": "900 Barton Springs Rd",
@@ -58,14 +57,14 @@
 	"agerange": "16 to 18",
 	"pricerange": "Free",
 	"category": "Educational",
-	"rating": 5,
+	"rating": 0,
 	"picture": "careercouncil.jpg",
 	"url": "https://austintexas.gov/event/career-fest-austin-youth-council-annual-community-event",
 	"opentime": "10am – 2pm",
 	"tag": "Recommended"
 },
 {
-	"title": "Southwest Key's El Centro de Familia (Community Room),",
+	"title": "Zumba",
 	"description": "Zumba is easy, fun, and an excellent exercise and… you don’t even feel like you are exercising! It is definitely a \"party\" atmosphere which is less intimidating for people who may not be as coordinated as others. It is a \"feel good\" workout where you can dance your woes away!",
 	"address": {
 		"street1": "6002 Jain Lane ",
@@ -79,14 +78,14 @@
 	"agerange": "6 to 18",
 	"pricerange": "$(less than $10)",
 	"category": "Physical",
-	"rating": 5,
+	"rating": 0,
 	"picture": "zumba.jpg",
 	"url": "http://www.swkey.org/promise/event/2012/11/05/1352162700/zumba-classes",
 	"opentime": "6:30pm – 7:45pm",
 	"tag": "Recommended"
 },
 {
-	"title": "Centro Cultural Hispano de San Marcos ",
+	"title": "Farmily Art Night",
 	"description": "",
 	"address": {
 		"street1": "211 Lee Street ",
@@ -100,14 +99,14 @@
 	"agerange": "6 to 18",
 	"pricerange": "$(less than $10)",
 	"category": "Educational",
-	"rating": 5,
+	"rating": 0,
 	"picture": "familyartnight.jpg",
 	"url": "http://www.sanmarcoscentro.org/calendar.html",
 	"opentime": "6:00pm – 7:15pm",
 	"tag": "Recommended"
 },
 {
-	"title": "",
+	"title": "Austin's Child Museum Community Night",
 	"description": "Austin Children’s Museum stays open late every Wednesday night for Community Night! Come out and enjoy exhibits and a variety of hands-on activities. Free admission but $1 donation is suggested.",
 	"address": {
 		"street1": "201 Colorado",
@@ -121,14 +120,14 @@
 	"agerange": "6 to 14",
 	"pricerange": "$(less than $10)",
 	"category": "Educational",
-	"rating": 5,
+	"rating": 0,
 	"picture": "austinchildmuseum.jpg",
 	"url": "",
 	"opentime": "5pm – 8pm",
 	"tag": "Recommended"
 },
 {
-	"title": "Pflugerville Public Library",
+	"title": "Oscar-Nominated Film Screening",
 	"description": "we'll be watching an animated fairy tale about a pair of sisters who have the power to control ice and snow. This film is rated PG. Refreshments will be provided while they last.",
 	"address": {
 		"street1": "1008 W Pflugerville St",
@@ -142,14 +141,14 @@
 	"agerange": "6 to 14",
 	"pricerange": "Free",
 	"category": "Social",
-	"rating": 5,
+	"rating": 0,
 	"picture": "oscarfilmcreening.jpg",
 	"url": "http://www.pflugervilletx.gov/faq.aspx?TID=3",
 	"opentime": "6pm - 9pm",
 	"tag": "Recommended"
 },
 {
-	"title": "The Williamson Museum",
+	"title": "Hands-On History",
 	"description": "Come out to The Williamson Museum the 2nd Saturday of each month from 10-2:00 p.m. for hands-on, interactive history lessons & activities. This program is free for children of all ages.",
 	"address": {
 		"street1": "716 S. Austin Ave. ",
@@ -163,14 +162,14 @@
 	"agerange": "6 to 18",
 	"pricerange": "Free",
 	"category": "Educational",
-	"rating": 5,
+	"rating": 0,
 	"picture": "handonhistory.jpg",
 	"url": "http://www.williamsonmuseum.org/",
 	"opentime": "10am – 2pm",
 	"tag": "Recommended"
 },
 {
-	"title": "Key East Austin Community Center",
+	"title": "Free Yoga at Southwest Key",
 	"description": "If you are looking to relieve stress, get to know your physical potential, and do so in a way that is nurturing and self affirming then yoga is a perfect solution for you",
 	"address": {
 		"street1": "6002 Jain Lane",
@@ -184,14 +183,14 @@
 	"agerange": "6 to 18",
 	"pricerange": "Free",
 	"category": "Physical",
-	"rating": 5,
+	"rating": 0,
 	"picture": "yoga.jpg",
 	"url": "http://www.zvents.com/austin_tx/events/show/248341504-yoga-classes",
 	"opentime": "5:30pm – 6:30pm",
 	"tag": "Recommended"
 },
 {
-	"title": "San Marcos Activity Center",
+	"title": "Free Juggling Club in San Marcos",
 	"description": "Join local Juggler Aaron Friend as he teaches you how to juggle. Come juggle with the San Marcos Juggling Club. If you want to learn, we will teach you.",
 	"address": {
 		"street1": "630 E Hopkins St",
@@ -205,14 +204,14 @@
 	"agerange": "9 to 18",
 	"pricerange": "Free",
 	"category": "Physical",
-	"rating": 5,
+	"rating": 0,
 	"picture": "juggling.jpg",
 	"url": "http://jugglejunction.org/club.php?sanm1082",
 	"opentime": "6pm – 7pm",
 	"tag": "Recommended"
 },
 {
-	"title": "Blanton Museum of Art The University of Texas at Austin",
+	"title": "Art Lab",
 	"description": "Drop by the Art Lab, an open studio that invites you to experiment with enticing materials and explore your own creative process.",
 	"address": {
 		"street1": "200 E. Martin Luther King Jr. Blvd. ",
@@ -226,14 +225,14 @@
 	"agerange": "6 to 18",
 	"pricerange": "$$($10 to $25)",
 	"category": "Educational",
-	"rating": 5,
+	"rating": 0,
 	"picture": "familyartnight.jpg",
 	"url": "http://blantonmuseum.org/experience_the_blanton/family_programs/",
 	"opentime": "5:30pm – 6:30pm",
 	"tag": "Recommended"
 },
 {
-	"title": "",
+	"title": "Free music - North Austin Trailer Yard",
 	"description": "North Austin FINALLY has a food truck court that ROCKS! Come to The NATY (North Austin Trailer Yard) Kid's Show every Sunday at 11:00am for great food and great music!",
 	"address": {
 		"street1": "1012 W. Anderson Ln. ",
@@ -247,14 +246,14 @@
 	"agerange": "6 to 18",
 	"pricerange": "Free",
 	"category": "Social",
-	"rating": 5,
+	"rating": 0,
 	"picture": "traileryard.jpg",
 	"url": "http://www.freefuninaustin.com/2013/02/north-austin-trailer-yard-kids-show.html",
 	"opentime": "11am – 12pm",
 	"tag": "Recommended"
 },
 {
-	"title": "Holiday Inn Town Lake",
+	"title": "Holiday Inn rooftop swimming and food",
 	"description": "Every Sunday Matches can use the rooftop pool and enjoy a hamburger or hot dog lunch and watch a movie in their theater for free.",
 	"address": {
 		"street1": "20 North IH-35",
@@ -268,14 +267,14 @@
 	"agerange": "6 to 18 ",
 	"pricerange": "Free",
 	"category": "Social",
-	"rating": 5,
+	"rating": 0,
 	"picture": "swimmingandfood.jpg",
 	"url": "",
 	"opentime": "11am – 5pm",
 	"tag": "Recommended"
 },
 {
-	"title": "MLK at Congress",
+	"title": "Free entrance at Blanton Art Museum",
 	"description": "Free Admission from 10am-5pm. The Blanton holds an incredible permanent collection, but they also have excellent visiting shows as well. Every 3rd Thursday, they are open until 9pm.",
 	"address": {
 		"street1": "200 East MLK",
@@ -289,14 +288,14 @@
 	"agerange": "6 to 18",
 	"pricerange": "Free",
 	"category": "Educational",
-	"rating": 5,
+	"rating": 0,
 	"picture": "blantonartmuseum.jpg",
 	"url": "http://blantonmuseum.org/",
 	"opentime": "11am – 5pm",
 	"tag": "Recommended"
 },
 {
-	"title": "Home Depot, all locations",
+	"title": "Home Depot Hand-on kid workshops",
 	"description": "Workshops teach children do-it-yourself skills, tool safety and instill a sense of pride and accomplishment. All kids get to keep their craft and receive a FREE certificate of achievement.",
 	"address": {
 		"street1": "",
@@ -310,7 +309,7 @@
 	"agerange": "6 to 14",
 	"pricerange": "Free",
 	"category": "Educational",
-	"rating": 5,
+	"rating": 0,
 	"picture": "kidworkshop.jpg",
 	"url": "http://workshops.homedepot.com/workshops/home?cm_mmc=SEM|THD|G|BT2|Resources&gclid=CMD2nZ6h174CFUjk7Aod038AHA&gclsrc=ds",
 	"opentime": "9am – 12pm",
@@ -331,32 +330,746 @@
 	"agerange": "6 to 14",
 	"pricerange": "Free",
 	"category": "Educational",
-	"rating": 5,
+	"rating": 0,
 	"picture": "firemuseum.jpg",
 	"url": "http://www.austinfiremuseum.org/",
 	"opentime": "12pm – 5pm",
 	"tag": "Recommended"
+},
+{
+	"title": "Great Place",
+	"description": "Great food and great educational games",
+	"address": {
+		"street1": "9611 Mcneil Rd",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78758"
+	},
+	"datebegin": "7/3/2014",
+	"dateend": null,
+	"interval": "Every month",
+	"agerange": "6 to 12",
+	"pricerange": "Free",
+	"category": "Social",
+	"rating": 0,
+	"picture": "greatplace.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "5pm – 8pm",
+	"tag": ""
+},
+{
+	"title": "Nice Discovery",
+	"description": "Discover your great abilities",
+	"address": {
+		"street1": "10000 Research Blvd",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78759"
+	},
+	"datebegin": "7/21/2104",
+	"dateend": null,
+	"interval": "Every week",
+	"agerange": "10 to 16",
+	"pricerange": "$$$ (over $25)",
+	"category": "Educational",
+	"rating": 0,
+	"picture": "nicediscovery.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "11am – 5pm",
+	"tag": ""
+},
+{
+	"title": "Midley Lake",
+	"description": "Swimming and fishing",
+	"address": {
+		"street1": "9400B Arboretum Blvd",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78759"
+	},
+	"datebegin": "7/22/2104",
+	"dateend": null,
+	"interval": "",
+	"agerange": "9 to 18",
+	"pricerange": "Free",
+	"category": "Physical",
+	"rating": 0,
+	"picture": "midleylake.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "10am – 6pm",
+	"tag": ""
+},
+{
+	"title": "Motorplex",
+	"description": "Racing",
+	"address": {
+		"street1": "8833 Burnet Rd",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78757"
+	},
+	"datebegin": "7/23/2104",
+	"dateend": null,
+	"interval": "Every week",
+	"agerange": "13 to 16",
+	"pricerange": "$$($10 to $25)",
+	"category": "Physical",
+	"rating": 0,
+	"picture": "racing.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "11am – 4pm",
+	"tag": ""
+},
+{
+	"title": "Jason Park",
+	"description": "Playing soccer with professional",
+	"address": {
+		"street1": "10520 N Lamar Blvd",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78753"
+	},
+	"datebegin": "7/24/2104",
+	"dateend": null,
+	"interval": "Every week",
+	"agerange": "13 to 18",
+	"pricerange": "Free",
+	"category": "Physical",
+	"rating": 0,
+	"picture": "soccer.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "2pm – 5pm",
+	"tag": ""
+},
+{
+	"title": "Asian Chan",
+	"description": "Having great Asian food",
+	"address": {
+		"street1": "10001 Stonelake Blvd",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78759"
+	},
+	"datebegin": "7/25/2104",
+	"dateend": null,
+	"interval": "Every month",
+	"agerange": "6 to 18",
+	"pricerange": "$$$ (over $25)",
+	"category": "Social",
+	"rating": 0,
+	"picture": "asianfood.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "4pm – 6pm",
+	"tag": ""
+},
+{
+	"title": "State Park",
+	"description": "Feeding birds",
+	"address": {
+		"street1": "3309 Esperanza Crossing",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78758"
+	},
+	"datebegin": "7/26/2104",
+	"dateend": null,
+	"interval": "Every week",
+	"agerange": "6 to 14",
+	"pricerange": "$(less than $10)",
+	"category": "Educational",
+	"rating": 0,
+	"picture": "feedingbird.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "1pm – 4pm",
+	"tag": ""
+},
+{
+	"title": "Aquarium",
+	"description": "Diving with sharks",
+	"address": {
+		"street1": "12001 Burnet Rd",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78758"
+	},
+	"datebegin": "7/27/2104",
+	"dateend": null,
+	"interval": "Every month",
+	"agerange": "14 to 18",
+	"pricerange": "Free",
+	"category": "Physical",
+	"rating": 0,
+	"picture": "divingwithshark.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "10am – 1pm",
+	"tag": ""
+},
+{
+	"title": "Six Flags",
+	"description": "Indoor sky-diving",
+	"address": {
+		"street1": "4001 W Parmer Ln",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78727"
+	},
+	"datebegin": "7/28/2104",
+	"dateend": null,
+	"interval": "Every month",
+	"agerange": "14 to 18",
+	"pricerange": "$$$ (over $25)",
+	"category": "Physical",
+	"rating": 0,
+	"picture": "indoorskydiving.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "1pm – 4pm",
+	"tag": ""
+},
+{
+	"title": "Martin Park",
+	"description": "Hiking",
+	"address": {
+		"street1": "2240 W Braker Ln",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78758"
+	},
+	"datebegin": "7/29/2104",
+	"dateend": null,
+	"interval": "Every week",
+	"agerange": "6 to 18",
+	"pricerange": "Free",
+	"category": "Physical",
+	"rating": 0,
+	"picture": "hiking.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "9am – 11am",
+	"tag": ""
+},
+{
+	"title": "Riverside Park",
+	"description": "Walking",
+	"address": {
+		"street1": "9414 Parkfield Dr",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78758"
+	},
+	"datebegin": "7/30/2104",
+	"dateend": null,
+	"interval": "Every week",
+	"agerange": "6 to 18",
+	"pricerange": "$(less than $10)",
+	"category": "Physical",
+	"rating": 0,
+	"picture": "walking.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "9am – 11am",
+	"tag": ""
+},
+{
+	"title": "Austin's Chess Club",
+	"description": "Playing chess",
+	"address": {
+		"street1": "8127 Mesa Dr",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78759"
+	},
+	"datebegin": "7/31/2104",
+	"dateend": null,
+	"interval": "Every week",
+	"agerange": "12 to 18",
+	"pricerange": "$(less than $10)",
+	"category": "Educational",
+	"rating": 0,
+	"picture": "chess.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "12pm – 5pm",
+	"tag": ""
+},
+{
+	"title": "Greenville Library",
+	"description": "Comic book reading",
+	"address": {
+		"street1": "11835 Jollyville Rd",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78759"
+	},
+	"datebegin": "8/1/2104",
+	"dateend": null,
+	"interval": "Every week",
+	"agerange": "6 to 13",
+	"pricerange": "Free",
+	"category": "Educational",
+	"rating": 0,
+	"picture": "comicbook.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "2pm – 4pm",
+	"tag": ""
+},
+{
+	"title": "Tech Ranch",
+	"description": "Start simple hacking",
+	"address": {
+		"street1": "10850 Stonelake Blvd",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78759"
+	},
+	"datebegin": "8/2/2104",
+	"dateend": null,
+	"interval": "Every week",
+	"agerange": "13 to 18",
+	"pricerange": "Free",
+	"category": "Educational",
+	"rating": 0,
+	"picture": "hacking.jpeg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "10am – 5pm",
+	"tag": ""
+},
+{
+	"title": "North State Park",
+	"description": "Hiking",
+	"address": {
+		"street1": "1779 Wells Branch Pkwy #102",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78728"
+	},
+	"datebegin": "8/3/2104",
+	"dateend": null,
+	"interval": "Every week",
+	"agerange": "6 to 18",
+	"pricerange": "Free",
+	"category": "Physical",
+	"rating": 0,
+	"picture": "hiking.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "9am – 11am",
+	"tag": ""
+},
+{
+	"title": "Greenbranch Community Center",
+	"description": "Dining with successful people",
+	"address": {
+		"street1": "9435 Interstate 35 Frontage Rd",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78753"
+	},
+	"datebegin": "8/4/2104",
+	"dateend": null,
+	"interval": "Every week",
+	"agerange": "14 to 18",
+	"pricerange": "$$($10 to $25)",
+	"category": "Social",
+	"rating": 0,
+	"picture": "diningwithsuccessfulpeople.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "12pm – 5pm",
+	"tag": ""
+},
+{
+	"title": "South State Park",
+	"description": "Running",
+	"address": {
+		"street1": "2521 Rutland Dr",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78758"
+	},
+	"datebegin": "8/5/2104",
+	"dateend": null,
+	"interval": "Every week",
+	"agerange": "10 to 18",
+	"pricerange": "$(less than $10)",
+	"category": "Physical",
+	"rating": 0,
+	"picture": "running.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "12pm – 5pm",
+	"tag": ""
+},
+{
+	"title": "Barker IntelPark",
+	"description": "Playing educational computer game",
+	"address": {
+		"street1": "501 W Canyon Ridge Dr",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78753"
+	},
+	"datebegin": "8/6/2104",
+	"dateend": null,
+	"interval": "Every week",
+	"agerange": "6 to 12",
+	"pricerange": "Free",
+	"category": "Educational",
+	"rating": 0,
+	"picture": "educationalgame.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "12pm – 5pm",
+	"tag": ""
+},
+{
+	"title": "Riverside Park",
+	"description": "Kayaking",
+	"address": {
+		"street1": "6301 W Parmer Ln #608",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78729"
+	},
+	"datebegin": "8/7/2104",
+	"dateend": null,
+	"interval": "Every month",
+	"agerange": "14 to 18",
+	"pricerange": "$(less than $10)",
+	"category": "Physical",
+	"rating": 0,
+	"picture": "kayaking.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "12pm – 5pm",
+	"tag": ""
+},
+{
+	"title": "Home Depot workshop",
+	"description": "Crafting",
+	"address": {
+		"street1": "10701 Research Blvd",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78759"
+	},
+	"datebegin": "8/8/2104",
+	"dateend": null,
+	"interval": "Every month",
+	"agerange": "6 to 15",
+	"pricerange": "Free",
+	"category": "Educational",
+	"rating": 0,
+	"picture": "crafting.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "12pm – 5pm",
+	"tag": ""
+},
+{
+	"title": "Bearcreek Place",
+	"description": "Play tennis",
+	"address": {
+		"street1": "10000 Research Blvd #101",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78759"
+	},
+	"datebegin": "8/9/2104",
+	"dateend": null,
+	"interval": "Every month",
+	"agerange": "10 to 14",
+	"pricerange": "$$($10 to $25)",
+	"category": "Physical",
+	"rating": 0,
+	"picture": "tennis.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "12pm – 5pm",
+	"tag": ""
+},
+{
+	"title": "Contruction TryIt",
+	"description": "Learning how to build house",
+	"address": {
+		"street1": "11835 Jollyville Rd",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78759"
+	},
+	"datebegin": "8/10/2104",
+	"dateend": null,
+	"interval": "Every month",
+	"agerange": "13 to 18",
+	"pricerange": "Free",
+	"category": "Educational",
+	"rating": 0,
+	"picture": "buildinghouse.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "12pm – 5pm",
+	"tag": ""
+},
+{
+	"title": "Central Park",
+	"description": "Walking",
+	"address": {
+		"street1": "6816 McNeil Rd",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78729"
+	},
+	"datebegin": "8/11/2104",
+	"dateend": null,
+	"interval": "Every month",
+	"agerange": "8 to 18",
+	"pricerange": "$$($10 to $25)",
+	"category": "Physical",
+	"rating": 0,
+	"picture": "walking.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "12pm – 5pm",
+	"tag": ""
+},
+{
+	"title": "Rivers Park",
+	"description": "Walking",
+	"address": {
+		"street1": "11600 Century Oaks Terrace",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78758"
+	},
+	"datebegin": "8/12/2104",
+	"dateend": null,
+	"interval": "Every month",
+	"agerange": "8 to 18",
+	"pricerange": "Free",
+	"category": "Physical",
+	"rating": 0,
+	"picture": "walking.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "12pm – 5pm",
+	"tag": ""
+},
+{
+	"title": "Kailasia Teahouse",
+	"description": "Tea tasting",
+	"address": {
+		"street1": "11101 Burnet Rd",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78758"
+	},
+	"datebegin": "8/13/2104",
+	"dateend": null,
+	"interval": "Every month",
+	"agerange": "6 to 18",
+	"pricerange": "Free",
+	"category": "Social",
+	"rating": 0,
+	"picture": "tea.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "12pm – 5pm",
+	"tag": ""
+},
+{
+	"title": "New Deli Kitchen",
+	"description": "Free Indian food",
+	"address": {
+		"street1": "2700 W Anderson Ln",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78757"
+	},
+	"datebegin": "8/14/2104",
+	"dateend": null,
+	"interval": "Every month",
+	"agerange": "6 to 18",
+	"pricerange": "$$($10 to $25)",
+	"category": "Social",
+	"rating": 0,
+	"picture": "indianfood.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "12pm – 5pm",
+	"tag": ""
+},
+{
+	"title": "Greenhouse Marketplace",
+	"description": "Free music and food",
+	"address": {
+		"street1": "8440 Burnet Rd #100",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78757"
+	},
+	"datebegin": "8/15/2104",
+	"dateend": null,
+	"interval": "Every month",
+	"agerange": "6 to 18",
+	"pricerange": "Free",
+	"category": "Social",
+	"rating": 0,
+	"picture": "musicandfood.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "12pm – 5pm",
+	"tag": ""
+},
+{
+	"title": "Deer Park River",
+	"description": "Feeding ducks",
+	"address": {
+		"street1": "3616 Far W Blvd",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78731"
+	},
+	"datebegin": "8/16/2104",
+	"dateend": null,
+	"interval": "Every month",
+	"agerange": "6 to 13",
+	"pricerange": "Free",
+	"category": "Educational",
+	"rating": 0,
+	"picture": "feedingbird.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "12pm – 5pm",
+	"tag": ""
+},
+{
+	"title": "North River Place",
+	"description": "Crabbing",
+	"address": {
+		"street1": "1519 W Anderson Ln",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78757"
+	},
+	"datebegin": "8/17/2104",
+	"dateend": null,
+	"interval": "Every month",
+	"agerange": "8 to 18",
+	"pricerange": "Free",
+	"category": "Physical",
+	"rating": 0,
+	"picture": "crabbing.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "12pm – 5pm",
+	"tag": ""
+},
+{
+	"title": "South River Place",
+	"description": "Clamming",
+	"address": {
+		"street1": "6203 N Capital of Texas Hwy",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78731"
+	},
+	"datebegin": "8/18/2104",
+	"dateend": null,
+	"interval": "Every month",
+	"agerange": "12 to 18",
+	"pricerange": "Free",
+	"category": "Physical",
+	"rating": 0,
+	"picture": "clamming.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "12pm – 5pm",
+	"tag": ""
+},
+{
+	"title": "North Branch Tech Ranch",
+	"description": "Learning how to build database",
+	"address": {
+		"street1": "3407 Greystone Dr",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78731"
+	},
+	"datebegin": "8/19/2104",
+	"dateend": null,
+	"interval": "Every month",
+	"agerange": "12 to 18",
+	"pricerange": "Free",
+	"category": "Educational",
+	"rating": 0,
+	"picture": "buildingdatabase.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "12pm – 5pm",
+	"tag": ""
+},
+{
+	"title": "Sea World",
+	"description": "Whale watching",
+	"address": {
+		"street1": "9414 Parkfield Dr",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78758"
+	},
+	"datebegin": "8/20/2104",
+	"dateend": null,
+	"interval": "Every month",
+	"agerange": "6 to 18",
+	"pricerange": "$$$ (over $25)",
+	"category": "Educational",
+	"rating": 0,
+	"picture": "whale.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "12pm – 5pm",
+	"tag": ""
+},
+{
+	"title": "Central Park",
+	"description": "Summer activities",
+	"address": {
+		"street1": "11601 Domain Dr",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "75758"
+	},
+	"datebegin": "8/21/2104",
+	"dateend": null,
+	"interval": "Every month",
+	"agerange": "6 to 18",
+	"pricerange": "$$$ (over $25)",
+	"category": "Physical",
+	"rating": 0,
+	"picture": "summeractivities.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "12pm – 5pm",
+	"tag": ""
+},
+{
+	"title": "Oak Place",
+	"description": "Hiking",
+	"address": {
+		"street1": "9503 Research Blvd",
+		"city": "Austin",
+		"state": "TX",
+		"zip": "78759"
+	},
+	"datebegin": "8/22/2104",
+	"dateend": null,
+	"interval": "Every month",
+	"agerange": "6 to 18",
+	"pricerange": "Free",
+	"category": "Physical",
+	"rating": 0,
+	"picture": "hiking.jpg",
+	"url": "http://www.austinfiremuseum.org/",
+	"opentime": "12pm – 5pm",
+	"tag": ""
 }];
 
 for (i = 0; i < jArray.length; i++)
 {
 console.log('Running ' + i); 
 json = jArray[i]; 
-addData(); 
+addData(json); 
 } 
     }
-      function addData()
+      function addData(json)
       {
            
             //grad address
             addressInput = json.address.street1 + ' ' + json.address.city + ', ' + json.address.state;
             console.log(addressInput); 
-          getAddress(json.address.street1,json.address.city,json.address.state, json.category); 
+          getAddress(json.address.street1,json.address.city,json.address.state, json.category, json); 
             
       
       }
 
-      function getAddress(street, city, state, cat)
+      function getAddress(street, city, state, cat,json)
       {
 
 require([
@@ -420,7 +1133,7 @@ function (
             //Create drive time polygon
             
             var jsonString = JSON.stringify(json); 
-            
+            console.log('posting ' + json.title); 
             $.ajax({
                 type: "POST",
                 url: "https://amber-fire-6558.firebaseIO.com/data/events.json",
@@ -467,7 +1180,7 @@ function (
                 url: "http://services2.arcgis.com/DlASPyTb2UPEalFT/arcgis/rest/services/BBBS_Address/FeatureServer/0/addFeatures",
                 data: {
                     f: 'pjson',
-                    token: "XYOPXRdr3-Po6ikWBhtkvm1Wa-LGSnljjGZ3zjczIh9cKnku4Xcy6CTgGXDpNhpn_vPnMUC0auVX92wcSEOKTlYNXHUHdN734wac26PymYiNBvHmqD4ZTikdXH4nLLXlwv8f122ZxKnrv1HJhJP4Ew..",
+                    token: "oZ2I9yiTm0dJ9OFUJ8kzyc4RajFoOXyqc3okj0_ycOCa9K84o23ibh0nYr92BMwgPMQg6Qanl-I3kyiW0cdLZuHRlHPJfWR-35JQGT7IEXBbKP8evCipRzDJj1tRJMw8_WgYM8Y-6wmei-CK1L-91Q..",
                     features: jsonString
 
                 },

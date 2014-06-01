@@ -74,6 +74,8 @@
 
     <script src="https://js.arcgis.com/3.9/"></script>
     <script src="js/mapping.js"></script>
+	<script src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
+	<script src='https://cdn.firebase.com/js/simple-login/1.4.1/firebase-simple-login.js'></script>
 	
 	
 	<style>
@@ -131,6 +133,7 @@
 			          <input class="form-control"  id="address" type="search" placeholder="Search">
 			          <span class="input-group-btn">                
 			            <button id="locate"  type="button"  class="searchbtn" onclick="locate();" >Testing</button><button onclick="getLocation();">Try It</button>
+                  <button onclick="addTraffic();">Try It</button>
 
 			          </span>            
 			        </div>
@@ -147,6 +150,9 @@
 	 
 
 	<div id="mainWindow" >
+    <div id="InfoDiv" style="overflow: auto">
+      This is a test. 
+    </div>
       <div id="map">
       </div>
     </div>

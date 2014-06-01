@@ -1,15 +1,247 @@
-/*!
- * 
- * Portamento  v1.1.1 - 2011-09-02
- * http://simianstudios.com/portamento
- *   
- * Copyright 2011 Kris Noble except where noted.
- * 
- * Dual-licensed under the GPLv3 and Apache 2.0 licenses: 
- * http://www.gnu.org/licenses/gpl-3.0.html
- * http://www.apache.org/licenses/LICENSE-2.0
- * 
- */
-(function($){$.fn.portamento=function(options){var thisWindow=$(window);var thisDocument=$(document);$.fn.viewportOffset=function(){var win=$(window);var offset=$(this).offset();return{left:offset.left-win.scrollLeft(),top:offset.top-win.scrollTop()}};function positionFixedSupported(){var container=document.body;if(document.createElement&&container&&container.appendChild&&container.removeChild){var el=document.createElement("div");if(!el.getBoundingClientRect){return null}el.innerHTML="x";el.style.cssText="position:fixed;top:100px;";container.appendChild(el);var originalHeight=container.style.height,originalScrollTop=container.scrollTop;container.style.height="3000px";container.scrollTop=500;var elementTop=el.getBoundingClientRect().top;container.style.height=originalHeight;var isSupported=elementTop===100;container.removeChild(el);container.scrollTop=originalScrollTop;return isSupported}return null}function getScrollerWidth(){var scr=null;var inn=null;var wNoScroll=0;var wScroll=0;scr=document.createElement("div");scr.style.position="absolute";scr.style.top="-1000px";scr.style.left="-1000px";scr.style.width="100px";scr.style.height="50px";scr.style.overflow="hidden";inn=document.createElement("div");inn.style.width="100%";inn.style.height="200px";scr.appendChild(inn);document.body.appendChild(scr);wNoScroll=inn.offsetWidth;scr.style.overflow="auto";wScroll=inn.offsetWidth;document.body.removeChild(document.body.lastChild);return(wNoScroll-wScroll)}var opts=$.extend({},$.fn.portamento.defaults,options);var panel=this;var wrapper=opts.wrapper;var gap=opts.gap;var disableWorkaround=opts.disableWorkaround;var fullyCapableBrowser=positionFixedSupported();if(panel.length!=1){return this}if(!fullyCapableBrowser&&disableWorkaround){return this}panel.wrap('<div id="portamento_container" />');var float_container=$("#portamento_container");float_container.css({"min-height":panel.outerHeight(),width:panel.outerWidth()});var panelOffset=panel.offset().top;var panelMargin=parseFloat(panel.css("marginTop").replace(/auto/,0));var realPanelOffset=panelOffset-panelMargin;var topScrollBoundary=realPanelOffset-gap;var wrapperPaddingFix=parseFloat(wrapper.css("paddingTop").replace(/auto/,0));var containerMarginFix=parseFloat(float_container.css("marginTop").replace(/auto/,0));var ieFix=0;var isMSIE=
-/*@cc_on!@*/
-0;if(isMSIE){ieFix=getScrollerWidth()+4}thisWindow.bind("scroll.portamento",function(){if(thisWindow.height()>panel.outerHeight()&&thisWindow.width()>=(thisDocument.width()-ieFix)){var y=thisDocument.scrollTop();if(y>=(topScrollBoundary)){if((panel.innerHeight()-wrapper.viewportOffset().top)-wrapperPaddingFix+gap>=wrapper.height()){if(panel.hasClass("fixed")||thisWindow.height()>=panel.outerHeight()){panel.removeClass("fixed");panel.css("top",(wrapper.height()-panel.innerHeight())+"px")}}else{panel.addClass("fixed");if(fullyCapableBrowser){panel.css("top",gap+"px")}else{panel.clearQueue();panel.css("position","absolute").animate({top:(0-float_container.viewportOffset().top+gap)})}}}else{panel.removeClass("fixed");panel.css("top","0")}}else{panel.removeClass("fixed")}});thisWindow.bind("resize.portamento",function(){if(thisWindow.height()<=panel.outerHeight()||thisWindow.width()<thisDocument.width()){if(panel.hasClass("fixed")){panel.removeClass("fixed");panel.css("top","0")}}else{thisWindow.trigger("scroll.portamento")}});thisWindow.bind("orientationchange.portamento",function(){thisWindow.trigger("resize.portamento")});thisWindow.trigger("scroll.portamento");return this};$.fn.portamento.defaults={wrapper:$("body"),gap:10,disableWorkaround:false}})(jQuery);
+
+(function( window, $, undefined ) {
+	
+	/*
+	* smartresize: debounced resize event for jQuery
+	*
+	* latest version and complete README available on Github:
+	* https://github.com/louisremi/jquery.smartresize.js
+	*
+	* Copyright 2011 @louis_remi
+	* Licensed under the MIT license.
+	*/
+
+	var $event = $.event, resizeTimeout;
+
+	$event.special.smartresize 	= {
+		setup: function() {
+			$(this).bind( "resize", $event.special.smartresize.handler );
+		},
+		teardown: function() {
+			$(this).unbind( "resize", $event.special.smartresize.handler );
+		},
+		handler: function( event, execAsap ) {
+			// Save the context
+			var context = this,
+				args 	= arguments;
+
+			// set correct event type
+			event.type = "smartresize";
+
+			if ( resizeTimeout ) { clearTimeout( resizeTimeout ); }
+			resizeTimeout = setTimeout(function() {
+				jQuery.event.handle.apply( context, args );
+			}, execAsap === "execAsap"? 0 : 100 );
+		}
+	};
+
+	$.fn.smartresize 			= function( fn ) {
+		return fn ? this.bind( "smartresize", fn ) : this.trigger( "smartresize", ["execAsap"] );
+	};
+	
+	$.Accordion 				= function( options, element ) {
+	
+		this.$el			= $( element );
+		// list items
+		this.$items			= this.$el.children('ul').children('li');
+		// total number of items
+		this.itemsCount		= this.$items.length;
+		
+		// initialize accordion
+		this._init( options );
+		
+	};
+	
+	$.Accordion.defaults 		= {
+		// index of opened item. -1 means all are closed by default.
+		open			: -1,
+		// if set to true, only one item can be opened. Once one item is opened, any other that is opened will be closed first
+		oneOpenedItem	: false,
+		// speed of the open / close item animation
+		speed			: 600,
+		// easing of the open / close item animation
+		easing			: 'easeInOutExpo',
+		// speed of the scroll to action animation
+		scrollSpeed		: 900,
+		// easing of the scroll to action animation
+		scrollEasing	: 'easeInOutExpo'
+    };
+	
+	$.Accordion.prototype 		= {
+		_init 				: function( options ) {
+			
+			this.options 		= $.extend( true, {}, $.Accordion.defaults, options );
+			
+			// validate options
+			this._validate();
+			
+			// current is the index of the opened item
+			this.current		= this.options.open;
+			
+			// hide the contents so we can fade it in afterwards
+			this.$items.find('div.st-content').hide();
+			
+			// save original height and top of each item	
+			this._saveDimValues();
+			
+			// if we want a default opened item...
+			if( this.current != -1 )
+				this._toggleItem( this.$items.eq( this.current ) );
+			
+			// initialize the events
+			this._initEvents();
+			
+		},
+		_saveDimValues		: function() {
+		
+			this.$items.each( function() {
+				
+				var $item		= $(this);
+				
+				$item.data({
+					originalHeight 	: $item.find('a:first').height(),
+					offsetTop		: $item.offset().top
+				});
+				
+			});
+			
+		},
+		// validate options
+		_validate			: function() {
+		
+			// open must be between -1 and total number of items, otherwise we set it to -1
+			if( this.options.open < -1 || this.options.open > this.itemsCount - 1 )
+				this.options.open = -1;
+	 	
+		},
+		_initEvents			: function() {
+			
+			var instance	= this;
+			
+			// open / close item
+			this.$items.find('a:first').bind('click.accordion', function( event ) {
+				
+				var $item			= $(this).parent();
+				
+				// close any opened item if oneOpenedItem is true
+				if( instance.options.oneOpenedItem && instance._isOpened() && instance.current!== $item.index() ) {
+					
+					instance._toggleItem( instance.$items.eq( instance.current ) );
+				
+				}
+				
+				// open / close item
+				instance._toggleItem( $item );
+				
+				return false;
+			
+			});
+			
+			$(window).bind('smartresize.accordion', function( event ) {
+				
+				// reset orinal item values
+				instance._saveDimValues();
+			
+				// reset the content's height of any item that is currently opened
+				instance.$el.find('li.st-open').each( function() {
+					
+					var $this	= $(this);
+					$this.css( 'height', $this.data( 'originalHeight' ) + $this.find('div.st-content').outerHeight( true ) );
+				
+				});
+				
+				// scroll to current
+				if( instance._isOpened() )
+				instance._scroll();
+				
+			});
+			
+		},
+		// checks if there is any opened item
+		_isOpened			: function() {
+		
+			return ( this.$el.find('li.st-open').length > 0 );
+		
+		},
+		// open / close item
+		_toggleItem			: function( $item ) {
+			
+			var $content = $item.find('div.st-content');
+			
+			( $item.hasClass( 'st-open' ) ) 
+					
+				? ( this.current = -1, $content.stop(true, true).fadeOut( this.options.speed ), $item.removeClass( 'st-open' ).stop().animate({
+					height	: $item.data( 'originalHeight' )
+				}, this.options.speed, this.options.easing ) )
+				
+				: ( this.current = $item.index(), $content.stop(true, true).fadeIn( this.options.speed ), $item.addClass( 'st-open' ).stop().animate({
+					height	: $item.data( 'originalHeight' ) + $content.outerHeight( true )
+				}, this.options.speed, this.options.easing ), this._scroll( this ) )
+		
+		},
+		// scrolls to current item or last opened item if current is -1
+		_scroll				: function( instance ) {
+			
+			var instance	= instance || this, current;
+			
+			( instance.current !== -1 ) ? current = instance.current : current = instance.$el.find('li.st-open:last').index();
+			
+			$('html, body').stop().animate({
+				scrollTop	: ( instance.options.oneOpenedItem ) ? instance.$items.eq( current ).data( 'offsetTop' ) : instance.$items.eq( current ).offset().top
+			}, instance.options.scrollSpeed, instance.options.scrollEasing );
+		
+		}
+	};
+	
+	var logError 				= function( message ) {
+		
+		if ( this.console ) {
+			
+			console.error( message );
+			
+		}
+		
+	};
+	
+	$.fn.accordion 				= function( options ) {
+	
+		if ( typeof options === 'string' ) {
+		
+			var args = Array.prototype.slice.call( arguments, 1 );
+
+			this.each(function() {
+			
+				var instance = $.data( this, 'accordion' );
+				
+				if ( !instance ) {
+					logError( "cannot call methods on accordion prior to initialization; " +
+					"attempted to call method '" + options + "'" );
+					return;
+				}
+				
+				if ( !$.isFunction( instance[options] ) || options.charAt(0) === "_" ) {
+					logError( "no such method '" + options + "' for accordion instance" );
+					return;
+				}
+				
+				instance[ options ].apply( instance, args );
+			
+			});
+		
+		} 
+		else {
+		
+			this.each(function() {
+				var instance = $.data( this, 'accordion' );
+				if ( !instance ) {
+					$.data( this, 'accordion', new $.Accordion( options, this ) );
+				}
+			});
+		
+		}
+		
+		return this;
+		
+	};
+	
+})( window, jQuery );
