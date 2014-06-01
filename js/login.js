@@ -8,11 +8,12 @@ function login(){
 		    alert("Incorrect email address or password");
 		    return ;
 		  } else if (user) {
-		    $( "#main-content" ).load( "admin-content.html" );
+		    $( "#main-content" ).load( "inputEvent.html" );
 		    return;
 		  } else {
-		  	return null;
-		  	//not logged in
+		  	console.log(error);
+		    alert("Incorrect email address or password");
+		    return;
 		  }
 		});
 	});
