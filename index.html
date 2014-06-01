@@ -23,6 +23,8 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<link href="css/styles.css" rel="stylesheet">
 	
+	<link href="css/map.css" rel="stylesheet">
+	
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
      <!--[if lt IE 9]>
        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -88,7 +90,7 @@
 		
 
 </HEAD>
-<BODY class="claro">
+<BODY class="claro" onload="getLocation()">
 	<!-- Fixed navbar -->
     <div  class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
@@ -125,9 +127,10 @@
 				<form class="navbar-form navbar-right" action="#" role="search">
 			      <div class="form-group">
 			        <div class="input-group">
-			          <input class="form-control"  id="address" type="search" placeholder="Search">
-			          <span class="input-group-btn">
-			            <button id="locate" data-dojo-type="dijit/form/Button" type="submit" class="btn"></button>
+			          <input class="form-control"  id="address" type="search" placeholder="Search Address">
+			          <span class="input-group-btn">                
+			            <button id="locate"  type="button"  class="searchbtn" onclick="locate();" >Testing</button><button onclick="getLocation();">Try It</button>
+
 			          </span>            
 			        </div>
 			      </div>               
@@ -199,9 +202,6 @@
 	<script src="js/portamento-min.js"></script>
 
 	<script>
-		var x=document.getElementById("demo");
-		window.onload=function(){
-		
 		
 		function getLocation()
 		  {
@@ -211,22 +211,20 @@
 			}
 		  else{x.innerHTML="Geolocation is not supported by this browser.";}
 		  }
+      
 		function showPosition(position)
 		  {
-		  x.innerHTML="Latitude: " + position.coords.latitude + 
-		  "<br>Longitude: " + position.coords.longitude;	
+      ZoomLocation(position.coords.longitude, position.coords.latitude); 
 		  }
 	
 	
 	
 			$(document).ready(function() {
-				$('#sidebar').portamento({gap: 200});	// set a 100px gap rather than the default 10px
+				$('#sidebar').portamento({gap: 100});	// set a 100px gap rather than the default 10px
 				
 				
 				
 			});	
-			
-			};
 		</script>
 </BODY>
 </HTML>
