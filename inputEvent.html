@@ -8,10 +8,26 @@ Title
 <br/>
 
 <label>
-Address
+Address:
 </label>
 
-<textarea id="address"></textarea>
+<div id="address" style="padding-left: 30px;">
+  <label>Street1</label>
+  <input type="text" id="street1">
+  <br/>
+  <label>Street2</label>
+  <input type="text" id="street2">
+  <br/>
+  <label>City</label>
+  <input type="text" id="city">
+  <br/>
+  <label>State</label>
+  <input type="text" id="state">
+  <br/>
+  <label>Zip</label>
+  <input type="text" id="zip">
+  <br/>
+</div>
 <br/>
 <br/>
 <label>
@@ -46,13 +62,6 @@ Date Begin
 
 
 <label>
-Date End
-</label>
-<input type="date" id="dateend">
-<br/>
-<br/>
-
-<label>
 Description
 </label>
 <textarea id="description"></textarea>
@@ -61,24 +70,17 @@ Description
 <label>
 Interval (Days)
 </label>
-<input type="number" value="1" min="1" max="90" id="interval">
+<input type="text" value="1" min="1" max="90" id="interval">
 <br/>
 <br/>
 
 <label>
 Open Time
 </label>
-<input type="time" id="opentime">
+<input type="text" id="opentime">
 <br/>
 <br/>
 
-
-<label>
-Close Time
-</label>
-<input type="time" id="closetime">
-<br/>
-<br/>
 
 <label>
 Picture URL
@@ -107,7 +109,7 @@ Tag
 <label>
 Url
 </label>
-<input type="text" id="url">
+<input type="url" id="url">
 <br/>
 <input type="submit">
 </form>
@@ -118,15 +120,26 @@ Url
     var arrayTest = new Array();
     var fb2 = new Firebase("https://amber-fire-6558.firebaseio.com/data/events");
 
-
-    fb2.set({address : $("#address").val(), agerange: $("#agerange").val(),
+    fb2.push({address : {street1: $("#street1").val(), street2: $("#street2").val(),
+      city: $("#city").val(), state: $("#state").val(), zip: $("#zip").val()},
+      agerange: $("#agerange").val(),
       category: $("#category").val(), datebegin: $("#datebegin").val(),
       description: $("#description").val(), interval: $("#interval").val(),
       opentime: $("#opentime").val(), picture: $("#picture").val(),
       pricerange: $("#pricerange").val(), rating: $("#rating").val(),
       tag: $("#tag").val(), title: $("#title").val(), url: $("#url").val()
     });
+
     /*
+    fb2.put({address : {street1: $("#street1").val(), street2: $("#street2").val(),
+      city: $("#city").val(), state: $("#state").val(), zip:  $("$zip").val()},
+      agerange: $("#agerange").val(),
+      category: $("#category").val(), datebegin: $("#datebegin").val(),
+      description: $("#description").val(), interval: $("#interval").val(),
+      opentime: $("#opentime").val(), picture: $("#picture").val(),
+      pricerange: $("#pricerange").val(), rating: $("#rating").val(),
+      tag: $("#tag").val(), title: $("#title").val(), url: $("#url").val()
+    });
 
     fb2.once('value', function(snapshot) {
       snapshot.forEach(function(userSnap) {
