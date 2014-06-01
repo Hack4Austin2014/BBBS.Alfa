@@ -387,6 +387,7 @@ function GetEvents(ids)
   fb.once('value', function(snapshot) {
     snapshot.forEach(function(userSnap) {
       var resultHtml = ''; 
+      var detailHtml = ''; 
       var i = 0;
       // jQuery("#eventsDiv").append("Event: " + userSnap.val().title + "<br/>");
       if (ids == undefined)
@@ -403,12 +404,13 @@ function GetEvents(ids)
             var info = userSnap.val(); 
             // console.log(userSnap.val());
             resultHtml += "<img src='eventpics/" + info.picture + "' width='60px' height='60px'>" + info.title + "<br/>";
+			detailHtml += info.description; 
             ids.splice(i, 1);
           }
         });
       }
       console.log(resultHtml); 
-      $('#InfoDiv').append('<div>' + resultHtml + '</div>'); 
+      $('#resultList').append('<li><a href="#">' + resultHtml + '</a><div>' + detailHtml + '</div></li>'); 
     });
     
 //    setIds(arrayTest);
