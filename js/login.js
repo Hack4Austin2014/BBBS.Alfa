@@ -11,7 +11,7 @@ function login(){
 		    return ;
 		  } else if (user) {
 		    console.log(user);
-		    $( "#main-content" ).load( "inputEvent.html" );
+		    loadContent();
 		    return;
 		  } else {
 		  	
@@ -19,13 +19,18 @@ function login(){
 		  	  email: $('#inputEmail3').val(),
 		  	  password: $('#inputPassword3').val()
 		  	});
-		  	
 
-		  	console.log("User: ", !!usr._id);
-		  	if(!usr)
+		  	if(!!usr._id)
 		  		alert("Incorrect email address or password.");
+		  	else{
+		  		$( "#main-content" ).load( "inputEvent.html" );
+		  	}
 		    return;
 		  }
+		}
+
+		function loadContent (){
+
 		}
 	
 }
