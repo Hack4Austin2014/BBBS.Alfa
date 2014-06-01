@@ -1,7 +1,6 @@
 function login(){
 		var fb = new Firebase('https://amber-fire-6558.firebaseio.com');
 		var auth = new FirebaseSimpleLogin(fb, function(error, user) {
-		  alert("got thsi far");
 
 		  if (error) {
 		    // an error occurred while attempting login
@@ -9,6 +8,7 @@ function login(){
 		    alert("Incorrect email address or password");
 		    return ;
 		  } else if (user) {
+		    console.log(user);
 		    $( "#main-content" ).load( "inputEvent.html" );
 		    return;
 		  } else {
