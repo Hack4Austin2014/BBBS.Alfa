@@ -4,6 +4,7 @@ function login(){
 		var auth = new FirebaseSimpleLogin(fb, function(error, user) {
 		  if (error) {
 		    // an error occurred while attempting login
+		    console.log(error);
 		    return error;
 		  } else if (user) {
 		    // user authenticated with Firebase
