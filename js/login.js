@@ -1,35 +1,28 @@
 
 var fb = new Firebase('https://amber-fire-6558.firebaseio.com');
-/*
+
 var auth = new FirebaseSimpleLogin(fb, function (error, user){
-	loadContent();
-	// if(error){
-	// 	console.log("There was an error!!!");
-	// 	console.log(error);
-	// }
-	// else if(user){
-	// 	loadContent();
-	// }
-	// else{
-	// 	console.log("no user logged in");
-	// 	displayLoginForm();
-	// }
+	if(error){
+		console.log(error);
+		var msg = "";
+		switch(error.code) {
+		      case 'INVALID_USER': msg = "The specified email address isn't registered as a user."; break;
+		      case 'INVALID_EMAIL': msg = "The specified email address is incorrect."; break;
+		      case 'INVALID_PASSWORD': msg = "The specified password is incorrect."; break;
+		      default: msg = "There was an error loggin in.";
+		    }
 
+		alert(msg);
+	}
+	else if(user){
+		loadContent();
+	}
+	else{
+		displayLoginForm();
+	}
 });
-*/
 
-$("document").ready(function(){
-   loadContent();
-});
-
-function loadContent (){
-	$.get('inputEvent.html', null, function (mydata, textStatus, jqXHR){
-		$("#main-content").html(mydata);
-	});
-}
-
-function displayLoginForm(){
-	var formHTML = '<form class="form-horizontal" role="form" onsubmit="window.mylogin()">\
+var loginHTML = '<div class="form-horizontal" role="form">\
 				    <div class="form-group">\
 				      <label for="inputEmail3" class="col-sm-2 control-label">Email</label>\
 				      <div class="col-sm-5">\
@@ -44,23 +37,37 @@ function displayLoginForm(){
 				    </div>\
 				    <div class="form-group">\
 				      <div class="col-sm-offset-2 col-sm-10">\
-				        <button id="submitButton" type="submit" class="btn btn-default">Sign in</button>\
+				        <button id="submitButton" class="btn btn-default" onclick="login()">Sign in</button>\
 				      </div>\
 				    </div>\
-				  </form>';
+				  </div>';
 
-	$( "#main-content" ).html(formHTML);
+
+
+function loadContent (){
+	$.get('inputEvent.html', null, function (mydata, textStatus, jqXHR){
+		$("#main-content").html(mydata);
+	});
+}
+
+
+
+
+function displayLoginForm(){
+	$("#main-content").html(loginHTML);
 
 }
-/*
-var mylogin = function (){
-	console.dir(window.auth);
+
+var login = function (){
    	var user_email = $('#inputEmail3').val();
    	var user_password = $('#inputPassword3').val();
-console.log(user_email, user_password);
-   	window.auth.login('password', {
+   	auth.login('password', {
   	  email: user_email,
   	  password: user_password
   	});
 }
-*/
+
+var logout = function(){
+	auth.logout();
+}
+
