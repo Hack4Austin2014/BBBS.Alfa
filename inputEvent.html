@@ -120,7 +120,6 @@ Url
 
 <script>
   jQuery("#inputEventForm").submit(function(){
-    alert("It worked.");
     var arrayTest = new Array();
     var fb2 = new Firebase("https://amber-fire-6558.firebaseio.com/data/events");
 
@@ -132,6 +131,14 @@ Url
       opentime: $("#opentime").val(), picture: $("#picture").val(),
       pricerange: $("#pricerange").val(), rating: $("#rating").val(),
       tag: $("#tag").val(), title: $("#title").val(), url: $("#url").val()
+    }, function(error){
+      if(error){
+        alert("There was an error saving to the database. For details, check the console.");
+        console.log(error);
+      }
+      else{
+        alert("The event was sucessfully submitted");
+      }
     });
 
     /*
